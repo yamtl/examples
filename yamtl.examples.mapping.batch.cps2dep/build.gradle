@@ -23,11 +23,11 @@ eclipse {
 }
 
 repositories {
-	mavenCentral()
-    jcenter()
 	maven {
 		url "https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo"
 	}
+	mavenCentral()
+    jcenter()
 }
 
 
@@ -64,7 +64,7 @@ sourceSets {
 
 dependencies {
 	compile "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion"
-	compile "yamtl:yamtl:0.0.1-SNAPSHOT" 
+	compile "yamtl:yamtl:0.0.1-SNAPSHOT"
 }
 
 
