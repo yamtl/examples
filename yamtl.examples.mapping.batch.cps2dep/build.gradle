@@ -4,6 +4,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
@@ -40,7 +41,7 @@ task wrapper(type: Wrapper) {
 	gradleVersion = gradleVer
 }
 
-
+mainClassName='cps2dep.Runner'
 
 // XTEND: configures output directories for generated java
 xtend {

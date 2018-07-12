@@ -1,8 +1,10 @@
 # CPS2DEP M2M Transformation
 
-This is a sample project that shows how to invoke a YAMTL m2m transformation (in `mapping` mode).
+This is a sample project that shows how to invoke a YAMTL m2m transformation (in `mapping` `batch` mode).
 
-This [m2m transformation](./src/main/java/cps2dep/Cps2DepYAMTL.xtend) is the implementation of the batch component of the [VIATRA CPS benchmark](https://github.com/viatra/viatra-cps-benchmark) in YAMTL. See its [specification](https://github.com/viatra/viatra-cps-benchmark/wiki/Benchmark-specification) for a detailed description.
+This [m2m transformation](./src/main/java/cps2dep/Cps2DepYAMTL.xtend) is the implementation of the batch component of the [VIATRA CPS benchmark](https://github.com/viatra/viatra-cps-benchmark) in YAMTL. 
+
+This project has been extracted and adapted from [our variant of the VIATRA CPS benchmark](https://github.com/yamtl/viatra-cps-batch-benchmark/tree/master/m2m.batch.cps2dep.yamtl)to show how to run the transformation independently of the benchmark.
 
 Benchmark results comparing the performance of YAMTL against state-of-the-art model transformation engines can be found [here](https://github.com/yamtl/viatra-cps-batch-benchmark).
 
@@ -17,6 +19,10 @@ To run the transformation:
   * Import the project from your local Git repository using `File > Import > Gradle > Existing Gradle Project`
     * Select the root of the project folder `yamtl.examples.mapping.batch.cps2dep` in your local Git Repository
     * Select `Override workspace settings` whenever given the option (point at which this option appears varies depending on the Eclipse distribution) and `Gradle wrapper`
-  * Run the [runner app](src/main/java/cps2dep/Runner.xtend) as a Java application. 
+  * Run the [runner app](src/main/java/cps2dep/Runner.xtend) as a Java application or simply by using './gradlew clean run` from command line.
     * The input model is [a client-server model](src/main/resources/cps2dep/output/) (see [specification](https://github.com/viatra/viatra-cps-benchmark/wiki/Benchmark-specification) for a description of this scenario).
     * The transformation generates two output models: a deployment model and a traceability model, both in the [output folder](src/main/resources/cps2dep/output/). 
+
+If you are interested in running sanity tests of the VIATRA CPS benchmark, note that there are small differences with the [official tests](https://github.com/viatra/viatra-docs/blob/master/cps/CPS-to-Deployment-Unit-Tests.adoc) as reported [here](https://github.com/yamtl/viatra-cps-batch-benchmark/tree/master/m2m.batch.cps2dep.yamtl#benchmark-sanity-checks), there are several options:
+  * Use JUnit's plugin within Eclipse IDE to run the test suite of the project.
+  * Run `./gradlew clean test` from command line.
