@@ -9,7 +9,7 @@ class Runner {
 		var String inputModelPath = '''src/main/resources/cps2dep/input/clientServer_000001.cyberphysicalsystem.xmi'''
 		
 		val xform = new Cps2DepYAMTL
-		xform.stageUpperBound = 1
+		xform.fromRoots = false
 		xform.extentTypeModifier = ExtentTypeModifier.LIST
 
 		// PREPARE MODELS
