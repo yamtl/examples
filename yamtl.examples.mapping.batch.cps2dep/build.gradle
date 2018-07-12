@@ -65,6 +65,7 @@ sourceSets {
 dependencies {
 	compile "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion"
 	compile "yamtl:yamtl:0.0.1-SNAPSHOT"
+	compile "com.google.guava:guava-testlib:24.1-jre"
 }
 
 

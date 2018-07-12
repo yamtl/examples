@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <deployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:deployment="http://org.eclipse.viatra/model/deployment">
   <hosts ip="simple.cps.host.server0.inst0">
     <applications id="simple.cps.app.ServerAppClass0.inst0">
