@@ -19,7 +19,7 @@ To run the transformation:
   * Import the project from your local Git repository using `File > Import > Gradle > Existing Gradle Project`
     * Select the root of the project folder `yamtl.examples.mapping.batch.cps2dep` in your local Git Repository
     * Select `Override workspace settings` whenever given the option (point at which this option appears varies depending on the Eclipse distribution) and `Gradle wrapper`
-  * Run the [runner app](src/main/java/cps2dep/Runner.xtend) as a Java application or simply by using './gradlew clean run` from command line.
+  * Run the [runner app](src/main/java/cps2dep/Runner.xtend) as a Java application or simply by using `./gradlew clean run` from command line.
     * The input model is [a client-server model](src/main/resources/cps2dep/output/) (see [specification](https://github.com/viatra/viatra-cps-benchmark/wiki/Benchmark-specification) for a description of this scenario).
     * The transformation generates two output models: a deployment model and a traceability model, both in the [output folder](src/main/resources/cps2dep/output/). 
 
