@@ -21,4 +21,4 @@ To run the transformation:
   * Run the [runner app](src/main/java/cd2db/Runner.xtend) as a Java application or simply by using `./gradlew clean run` from command line. 
     * The input model is [the abstract syntax of a simple class diagram](src/main/java/cd2db/sourceModel.pdf) that conforms to [this metamodel](src/main/resources/metamodels/CD.emf)
     * The transformation generates one output model, representing a database schema that conforms to [this metamodel](src/main/resources/metamodels/Relational.emf). 
-* The transformation runner is [this class](src/main/cd2db/Runner.xtend).
+* The transformation runner is [this class](src/main/java/cd2db/Runner.xtend).
