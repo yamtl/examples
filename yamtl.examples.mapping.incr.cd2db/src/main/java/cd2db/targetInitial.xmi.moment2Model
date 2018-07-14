@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmaRelational:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fmaRelational="uk.ac.le.cs.moment2.hierarchicalgraph" ID="_rJWk0H4DEeiYRIGUMRIhTA">
+  <type href="org.fma.Relational#//Table"/>
+  <objects name="1 : Table" ID="_rJWk0X4DEeiYRIGUMRIhTA">
+    <type href="org.fma.Relational#//Table"/>
+    <attributes value="name : 'Item'">
+      <type href="org.fma.Relational#//Named/name"/>
+    </attributes>
+    <references xsi:type="fmaRelational:Location" name="col">
+      <value name="2 : Column" ID="_rJWk0n4DEeiYRIGUMRIhTA">
+        <type href="org.fma.Relational#//Column"/>
+        <attributes value="name : 'product'">
+          <type href="org.fma.Relational#//Named/name"/>
+        </attributes>
+      </value>
+      <value name="3 : Column" ID="_rJXL4H4DEeiYRIGUMRIhTA">
+        <type href="org.fma.Relational#//Column"/>
+        <attributes value="name : 'date'">
+          <type href="org.fma.Relational#//Named/name"/>
+        </attributes>
+      </value>
+      <value name="4 : Column" ID="_rJXL4X4DEeiYRIGUMRIhTA">
+        <type href="org.fma.Relational#//Column"/>
+        <attributes value="name : 'pk_Item'">
+          <type href="org.fma.Relational#//Named/name"/>
+        </attributes>
+      </value>
+      <value name="5 : Column" ID="_rJXL4n4DEeiYRIGUMRIhTA">
+        <type href="org.fma.Relational#//Column"/>
+        <attributes value="name : 'fk_Item--items-->Order'">
+          <type href="org.fma.Relational#//Named/name"/>
+        </attributes>
+      </value>
+    </references>
+  </objects>
+  <objects name="6 : Table" ID="_rJXL434DEeiYRIGUMRIhTA">
+    <type href="org.fma.Relational#//Table"/>
+    <attributes value="name : 'Order'">
+      <type href="org.fma.Relational#//Named/name"/>
+    </attributes>
+    <references xsi:type="fmaRelational:Location" name="col">
+      <value name="7 : Column" ID="_rJXL5H4DEeiYRIGUMRIhTA">
+        <type href="org.fma.Relational#//Column"/>
+        <attributes value="name : 'pk_Order'">
+          <type href="org.fma.Relational#//Named/name"/>
+        </attributes>
+      </value>
+    </references>
+  </objects>
+</fmaRelational:Model>

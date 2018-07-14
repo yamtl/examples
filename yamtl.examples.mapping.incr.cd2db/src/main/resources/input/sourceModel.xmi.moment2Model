@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CD:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CD="uk.ac.le.cs.moment2.hierarchicalgraph" ID="_x3aDIH4BEeiYRIGUMRIhTA">
+  <type href="org.fma.fmaClass#//Class"/>
+  <objects name="1 : Class" ID="_x3aqMH4BEeiYRIGUMRIhTA">
+    <type href="org.fma.fmaClass#//Class"/>
+    <attributes value="name : 'A'">
+      <type href="org.fma.fmaClass#//NamedElt/name"/>
+    </attributes>
+    <attributes value="isAbstract : ">
+      <type href="org.fma.fmaClass#//Class/isAbstract"/>
+    </attributes>
+    <references xsi:type="CD:Location" name="attr">
+      <value name="2 : Attribute" ID="_x3b4UH4BEeiYRIGUMRIhTA">
+        <type href="org.fma.fmaClass#//Attribute"/>
+        <attributes value="name : 'name'">
+          <type href="org.fma.fmaClass#//NamedElt/name"/>
+        </attributes>
+        <attributes value="multiValued : false">
+          <type href="org.fma.fmaClass#//Attribute/multiValued"/>
+        </attributes>
+        <references xsi:type="CD:Link" name="type" value="_x3cfYn4BEeiYRIGUMRIhTA"/>
+      </value>
+    </references>
+  </objects>
+  <objects name="3 : Class" ID="_x3cfYH4BEeiYRIGUMRIhTA">
+    <type href="org.fma.fmaClass#//Class"/>
+    <attributes value="name : 'B'">
+      <type href="org.fma.fmaClass#//NamedElt/name"/>
+    </attributes>
+    <attributes value="isAbstract : ">
+      <type href="org.fma.fmaClass#//Class/isAbstract"/>
+    </attributes>
+    <references xsi:type="CD:Location" name="attr">
+      <value name="4 : Attribute" ID="_x3cfYX4BEeiYRIGUMRIhTA">
+        <type href="org.fma.fmaClass#//Attribute"/>
+        <attributes value="name : 'a_objects'">
+          <type href="org.fma.fmaClass#//NamedElt/name"/>
+        </attributes>
+        <attributes value="multiValued : true">
+          <type href="org.fma.fmaClass#//Attribute/multiValued"/>
+        </attributes>
+        <references xsi:type="CD:Link" name="type" value="_x3aqMH4BEeiYRIGUMRIhTA"/>
+      </value>
+    </references>
+  </objects>
+  <objects name="5 : DataType" ID="_x3cfYn4BEeiYRIGUMRIhTA">
+    <type href="org.fma.fmaClass#//DataType"/>
+    <attributes value="name : 'String'">
+      <type href="org.fma.fmaClass#//NamedElt/name"/>
+    </attributes>
+  </objects>
+</CD:Model>

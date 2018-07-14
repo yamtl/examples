@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:change="http://www.eclipse.org/emf/2003/Change">
+  <objectChanges>
+    <key href="../sourceModel.xmi#/0/@attr.1"/>
+    <value featureName="owner">
+      <referenceValue href="../sourceModel.xmi#/1"/>
+    </value>
+  </objectChanges>
+  <objectChanges>
+    <key href="../sourceModel.xmi#/0"/>
+    <value featureName="attr">
+      <listChanges kind="REMOVE" index="1"/>
+    </value>
+  </objectChanges>
+  <objectChanges>
+    <key href="../sourceModel.xmi#/1"/>
+    <value featureName="attr">
+      <listChanges index="1">
+        <referenceValues href="../sourceModel.xmi#/0/@attr.1"/>
+      </listChanges>
+    </value>
+  </objectChanges>
+</change:ChangeDescription>
