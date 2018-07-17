@@ -14,29 +14,8 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated deployment -->
-      <package
-            uri="http://org.eclipse.viatra/model/deployment"
-            class="org.eclipse.viatra.examples.cps.deployment.DeploymentPackage"
-            genModel="src/main/resources/csp2dep/metamodels/deployment.genmodel"/>
-   </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated model -->
-      <package
-            uri="http://org.eclipse.viatra/model/cps"
-            class="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage"
-            genModel="src/main/resources/csp2dep/metamodels/model.genmodel"/>
-   </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated traceability -->
-      <package
-            uri="http://org.eclipse.viatra/model/cps-traceability"
-            class="org.eclipse.viatra.examples.cps.traceability.TraceabilityPackage"
-            genModel="src/main/resources/csp2dep/metamodels/traceability.genmodel"/>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Relational -->

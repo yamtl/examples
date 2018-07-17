@@ -11,7 +11,6 @@ To run the transformation:
 * Install [Eclipse Oxygen](https://www.eclipse.org/downloads/eclipse-packages/) with 
   * EMF 2.12+;
   * Xtext SDK 2.13.0. **At the moment, YAMTL has been tested on Java 8 only**;
-  * CPS benchmark domain models from this update site: http://download.eclipse.org/viatra/examples/cps;
   * [Buildship Gradle Integration](https://marketplace.eclipse.org/content/buildship-gradle-integration).
 * Within an instance of Eclipse:
   * Clone [this project](../) with EGit.
