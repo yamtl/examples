@@ -20,7 +20,7 @@ To run the transformation:
   * Import the project from your local Git repository using `File > Import > Gradle > Existing Gradle Project`, then:
     * select the root of the project folder `yamtl.examples.mapping.batch.cps2dep` in your local Git Repository;
     * select `Override workspace settings` whenever given the option (point at which this option appears varies depending on the Eclipse distribution) and `Gradle wrapper`.
-  * If the basic `Import project` wizard in Eclipse, Gradle still needs to be used to configure the project:
+  * If the basic `Import project` wizard in Eclipse was used to import the project, Gradle still needs to be used to configure the project:
     * Using `Gradle Buildship`, right click on project and select `Gradle > Refresh Gradle Project`.
     * Using command line, open a terminal, cd to the project folder, run `./gradlew clean cleanEclipse eclipse`. Then refresh the project in the Eclipse IDE.
   * If Eclipse JDT does not find the generated code for your metamodels and there are compilation errors, re-generate the code as follows. For each `.genmodel` under `src/main/resources/csp2dep/metamodels/`:
