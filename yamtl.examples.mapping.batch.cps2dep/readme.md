@@ -15,7 +15,7 @@ To run the transformation:
   * CPS benchmark domain models from this update site: http://download.eclipse.org/viatra/examples/cps;
   * [Buildship Gradle Integration](https://marketplace.eclipse.org/content/buildship-gradle-integration).
 * Within an instance of Eclipse:
-  * Clone [this project](../) with EGit.
+  * Clone [this project](https://github.com/yamtl/examples) with EGit.
   * Import the project from your local Git repository using `File > Import > Gradle > Existing Gradle Project`, then:
     * select the root of the project folder `yamtl.examples.mapping.batch.cps2dep` in your local Git Repository;
     * select `Override workspace settings` whenever given the option (point at which this option appears varies depending on the Eclipse distribution) and `Gradle wrapper`.

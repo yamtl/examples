@@ -13,7 +13,7 @@ To run the transformation:
   * Xtext SDK 2.13.0. **At the moment, YAMTL has been tested on Java 8 only**;
   * [Buildship Gradle Integration](https://marketplace.eclipse.org/content/buildship-gradle-integration).
 * Within an instance of Eclipse:
-  * Clone [this project](../) with EGit.
+  * Clone [this project](https://github.com/yamtl/examples) with EGit.
   * Import the project from your local Git repository using `File > Import > Gradle > Existing Gradle Project` and then:
     * select the root of the project folder `yamtl.examples.mapping.batch.cd2db` in your local Git Repository; and
     * select `Override workspace settings` whenever given the option (point at which this option appears varies depending on the Eclipse distribution) and `Gradle wrapper`
