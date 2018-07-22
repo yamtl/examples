@@ -45,7 +45,7 @@ class Cps2DepYAMTL extends YAMTLModule {
 		header().in('cps', CPS).out('dep', DEP)
 		
 				
-		helperStore( newArrayList(
+		helperStore( #[
 			new Helper('waitingTransitions') [
 					val Map<String,List<Transition>> reachableWaitForTransitionsMap = newHashMap	 
 					CPS.transition.allInstances.forEach[ transition |
@@ -62,14 +62,14 @@ class Cps2DepYAMTL extends YAMTLModule {
 					]
 					reachableWaitForTransitionsMap
 				]
-				.build()
-		))
+				.build
+		])
 		
-		ruleStore( newArrayList(
+		ruleStore( #[
 			
 			new Rule('CyberPhysicalSystem_2_Deployment')
 				.priority(0)
-				.in('cps', CPS.cyberPhysicalSystem).build()
+				.in('cps', CPS.cyberPhysicalSystem).build
 				.out('out', DEP.deployment, [ 
 					val cps = 'cps'.fetch as CyberPhysicalSystem
 					val out = 'out'.fetch as Deployment
@@ -77,12 +77,12 @@ class Cps2DepYAMTL extends YAMTLModule {
 					val deploymentHosts = cps.hostTypes.map[instances].flatten
 						.fetch as List<DeploymentHost>
 					out.hosts += deploymentHosts 
-				]).build()
-				.build(),
+				]).build
+				.build,
 			
 			new Rule('HostInstance_2_DeploymentHost')
 				.priority(0)
-				.in('hostInstance', CPS.hostInstance).build()
+				.in('hostInstance', CPS.hostInstance).build
 				.out('out', DEP.deploymentHost, 
 					[ 
 						val hostInstance = 'hostInstance'.fetch as HostInstance
@@ -92,8 +92,8 @@ class Cps2DepYAMTL extends YAMTLModule {
 						
 						val deploymentApps = hostInstance.applications.fetch as List<DeploymentApplication>
 						out.applications += deploymentApps
-					]).build()
-				.build(),
+					]).build
+				.build,
 	
 			new Rule('ApplicationInstance_2_DeploymentApplication')
 				.priority(0)
@@ -102,7 +102,7 @@ class Cps2DepYAMTL extends YAMTLModule {
 						val appInstance = 'appInstance'.fetch as ApplicationInstance
 						appInstance.allocatedTo !== null
 					])
-					.build()
+					.build
 				.out('out', DEP.deploymentApplication,
 					[ 
 						val appInstance = 'appInstance'.fetch as ApplicationInstance
@@ -116,12 +116,12 @@ class Cps2DepYAMTL extends YAMTLModule {
    						appInstance.trackApplicationInstance(out)
 						
 					]
-				).build()
-				.build(),
+				).build
+				.build,
 	
 			new Rule('StateMachine_2_DeploymentBehavior')
 				.lazy
-				.in('stateMachine', CPS.stateMachine).build()
+				.in('stateMachine', CPS.stateMachine).build
 				.out('out', DEP.deploymentBehavior,
 					[ 
 						val stateMachine = 'stateMachine'.fetch as StateMachine
@@ -148,12 +148,12 @@ class Cps2DepYAMTL extends YAMTLModule {
 						
 						trackStateMachine(stateMachine, out)
 					]
-				).build()
-				.build(),
+				).build
+				.build,
 	
 			new Rule('State_2_BehaviorState')
 				.uniqueLazy
-				.in('state', CPS.state).build()
+				.in('state', CPS.state).build
 				.out('out', DEP.behaviorState,
 					[ 
 						val state = 'state'.fetch as State
@@ -164,8 +164,8 @@ class Cps2DepYAMTL extends YAMTLModule {
 
 						trackState(state,out)
 					]
-				).build()
-				.build(),
+				).build
+				.build,
 	
 			new Rule('Transition_2_BehaviorTransition')
 				.uniqueLazy
@@ -173,7 +173,7 @@ class Cps2DepYAMTL extends YAMTLModule {
 					.filter( [
 						val transition = 'transition'.fetch as Transition 
 						transition.targetState !== null
-					]).build()
+					]).build
 				.out('out', DEP.behaviorTransition, 
 					[ 
 						val transition = 'transition'.fetch as Transition
@@ -186,8 +186,8 @@ class Cps2DepYAMTL extends YAMTLModule {
 						
 						trackTransition(transition,out)
 					]
-				).build()
-				.build(),
+				).build
+				.build,
 				
 			new Rule('Transition_2_BehaviorTransition_Trigger')
 				.isTransient
@@ -197,7 +197,7 @@ class Cps2DepYAMTL extends YAMTLModule {
 						transition.targetState !== null
 						&&
 						transition.action?.isSignal
-					]).build()
+					]).build
 				.out('out', DEP.behaviorTransition, 
 					[ 
 						val transition = 'transition'.fetch as Transition
@@ -241,10 +241,10 @@ class Cps2DepYAMTL extends YAMTLModule {
 							}
 						}		
 					]
-				).build()
-				.build()
+				).build
+				.build
 	
-		))
+		])
 		
 		if (debug) println("constructor")
 	}
