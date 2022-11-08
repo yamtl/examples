@@ -6,4 +6,3 @@ bin
 build
 xtend-gen
 src/main/xtend-gen
-src/main/emf-gen
