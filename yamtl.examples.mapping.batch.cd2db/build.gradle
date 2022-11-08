@@ -1,12 +1,11 @@
 plugins {
-	id "org.xtext.xtend" version "1.0.21" // 24-01-2018
+	id "org.xtext.xtend" version "3.0.2"
+	id 'java'
+	id 'eclipse'
+	id 'application'
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'application'
-
-sourceCompatibility = 1.8
+sourceCompatibility = 17
 
 eclipse {
 	project {
@@ -27,19 +26,13 @@ repositories {
 	maven {
 		url "https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo"
 	}
-	mavenLocal()
 	mavenCentral()
-    jcenter()
 }
 
 
 ext {
-    gradleVer = '4.6'
-    xtendVersion = '2.13.0'
-}
-
-task wrapper(type: Wrapper) {
-	gradleVersion = gradleVer
+    xtendVersion = '2.28.0'
+	emfChangeVersion = '2.14.0'
 }
 
 mainClassName='cd2db.Runner'
@@ -67,7 +60,9 @@ sourceSets {
 
 
 dependencies {
-	compile "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion"
-	compile "yamtl:yamtl:0.0.1-SNAPSHOT"
+	implementation "org.eclipse.xtend:org.eclipse.xtend.core:$xtendVersion"
+	implementation "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion"
+	implementation "org.eclipse.emf:org.eclipse.emf.ecore.change:$emfChangeVersion"
+	implementation "yamtl:yamtl:0.2.5"
 }
 
