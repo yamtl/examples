@@ -1,14 +1,9 @@
-/.project
 # Ignore Gradle project-specific cache directory
 .gradle
 .project
 .classpath 
-**/.gradle
-**/.project
-**/.classpath 
 
 # Ignore Gradle build output directory
-/build/
-**/build/
+build
 /bin/
-**/bin/
+**/.DS_Store
