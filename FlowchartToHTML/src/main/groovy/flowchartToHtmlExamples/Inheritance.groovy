@@ -25,7 +25,7 @@ class Inheritance extends YAMTLModule {
                         .inheritsFrom(['Flowchart2H1'])
                         .in("e", flowchartPk.Subflow)
                         .out("h1", htmlPk.H1, {
-                            h1.value = "Action " + h1.value
+                            h1.value = "Subflow " + h1.value
                         })
         ])
     }

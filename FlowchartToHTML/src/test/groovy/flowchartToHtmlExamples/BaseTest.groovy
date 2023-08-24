@@ -27,5 +27,11 @@ class BaseTest extends YAMTLModule {
         xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
         xform.execute()
         xform.saveOutputModels(['out': BASE_PATH + '/baseOutput.xmi'])
+		
+		// test assertion
+		def actualModel = xform.getOutputModel('out')
+		EMFComparator comparator = new EMFComparator();
+		def expectedResource = xform.loadModel(BASE_PATH + '/baseExpectedOutput.xmi', false)
+		assertTrue( comparator.equals(expectedResource.getContents(), actualModel.getContents()) );
     }
 }
