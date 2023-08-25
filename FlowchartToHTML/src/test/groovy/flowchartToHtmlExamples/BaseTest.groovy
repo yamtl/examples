@@ -31,6 +31,7 @@ class BaseTest extends YAMTLModule {
 		// test assertion
 		def actualModel = xform.getOutputModel('out')
 		EMFComparator comparator = new EMFComparator();
+		xform.loadMetamodel(BASE_PATH + '/html.ecore', true)
 		def expectedResource = xform.loadModel(BASE_PATH + '/baseExpectedOutput.xmi', false)
 		assertTrue( comparator.equals(expectedResource.getContents(), actualModel.getContents()) );
     }
