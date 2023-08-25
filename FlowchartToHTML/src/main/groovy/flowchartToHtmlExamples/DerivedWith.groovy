@@ -15,20 +15,24 @@ class DerivedWith extends YAMTLModule {
 		
 		ruleStore([
 				rule('Action2Heading')
-						.in("a", flowchartPk.Action).derivedWith(null)
+						.in("a", flowchartPk.Action)
+						.in("b", flowchartPk.Action).derivedWith{ 
+							def f = a.eContainer()
+							f.nodes.first()
+						}
 						.out("h1", htmlPk.H1, {
-							h1.value = a.name
-						}),
-				rule('Decision2Heading')
-						.in("d", flowchartPk.Decision)
-						.out("h1", htmlPk.H1, {
-							h1.value = d.name
-						}),
-				rule('Transition2Heading')
-						.in("t", flowchartPk.Transition)
-						.out("h1", htmlPk.H1, {
-							h1.value = t.name
+							h1.value = b.name
 						})
+//				rule('Decision2Heading')
+//						.in("d", flowchartPk.Decision)
+//						.out("h1", htmlPk.H1, {
+//							h1.value = d.name
+//						}),
+//				rule('Transition2Heading')
+//						.in("t", flowchartPk.Transition)
+//						.out("h1", htmlPk.H1, {
+//							h1.value = t.name
+//						})
 		])
 
 	}

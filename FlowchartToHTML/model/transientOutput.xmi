@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<H1 xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="HTML" value="The Wakeup flowchart has null transitions"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="HTML" xmlns:_1="flowchart">
+  <H1 value="The Wakeup flowchart has 0 transitions"/>
+  <DIV>
+    <children xsi:type="_1:Transition" name="">
+      <source xsi:type="_1:Action" href="wakeup.xmi#_9mLMwTY6EeOwt8pm-kjW_Q"/>
+      <target xsi:type="_1:Decision" href="wakeup.xmi#_9mLMwjY6EeOwt8pm-kjW_Q"/>
+    </children>
+    <children xsi:type="_1:Transition" name="Yes">
+      <source xsi:type="_1:Decision" href="wakeup.xmi#_9mLMwjY6EeOwt8pm-kjW_Q"/>
+      <target xsi:type="_1:Action" href="wakeup.xmi#_9mLMwzY6EeOwt8pm-kjW_Q"/>
+    </children>
+    <children xsi:type="_1:Transition" name="Some Time Passes">
+      <source xsi:type="_1:Action" href="wakeup.xmi#_9mLMwzY6EeOwt8pm-kjW_Q"/>
+      <target xsi:type="_1:Action" href="wakeup.xmi#_9mLMwTY6EeOwt8pm-kjW_Q"/>
+    </children>
+    <children xsi:type="_1:Transition" name="No">
+      <source xsi:type="_1:Decision" href="wakeup.xmi#_9mLMwjY6EeOwt8pm-kjW_Q"/>
+      <target xsi:type="_1:Action" href="wakeup.xmi#_9mLMxDY6EeOwt8pm-kjW_Q"/>
+    </children>
+    <children xsi:type="_1:Transition" name="start">
+      <source xsi:type="_1:Action" href="wakeup.xmi#_9mLMxTY6EeOwt8pm-kjW_Q"/>
+      <target xsi:type="_1:Action" href="wakeup.xmi#_9mLMwTY6EeOwt8pm-kjW_Q"/>
+    </children>
+  </DIV>
+</xmi:XMI>
