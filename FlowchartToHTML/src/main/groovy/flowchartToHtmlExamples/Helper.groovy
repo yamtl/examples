@@ -9,10 +9,10 @@ import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 import yamtl.groovy.YAMTLGroovyExtensions
 
-class BaseHelper extends YAMTLModule {
+class Helper extends YAMTLModule {
 	public int i = 0
 	
-    public BaseHelper(EPackage flowchartPk, EPackage htmlPk) {
+    public Helper(EPackage flowchartPk, EPackage htmlPk) {
         YAMTLGroovyExtensions_dynamicEMF.init(this)
 
         header().in('in', flowchartPk).out('out', htmlPk)
@@ -44,11 +44,11 @@ class BaseHelper extends YAMTLModule {
 		helperStore([
 			staticAttribute('att', { 
 				// returns a name
-				"decision"
+				return "decision"
 			}),
 			staticOperation('op', { argsMap ->
 				// returns the argument 'obj'
-				argsMap.obj.name
+				return argsMap.obj.name
 			}),
 			contextualOperation('c_op', { obj, argsMap ->
 				// returns the name of the contextual instance 'obj' appended by the argument 'suffix'
@@ -57,13 +57,4 @@ class BaseHelper extends YAMTLModule {
 		])
 
     }
-	def static void main(String[] args) {
-		def mmF = BaseHelper.loadMetamodel('./model/flowchart.emf')
-		def mmH = BaseHelper.loadMetamodel('./model/html.emf')
-		def xform = new BaseHelper(mmF, mmH)
-		YAMTLGroovyExtensions.init(xform)
-		xform.loadInputModels(['in': './model/wakeup.xmi'])
-		xform.execute()
-		xform.saveOutputModels(['out': './model/base_helper_output.xmi'])
-	}
 }

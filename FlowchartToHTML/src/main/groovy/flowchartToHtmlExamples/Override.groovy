@@ -32,7 +32,7 @@ class Override extends YAMTLModule {
 								h1.value = "Subflow " + e.name //Overridden output object
 							}
                         //Override the parent rule's h1 output object so the one in child rule is used    
-                        }).overriding() 
+                        }) 
 		])
 	}
 }

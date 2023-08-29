@@ -5,4 +5,9 @@
   <children xsi:type="H1" value="Sleep"/>
   <children xsi:type="H1" value="Get up"/>
   <children xsi:type="H1" value="begin"/>
+  <children xsi:type="H1" value=""/>
+  <children xsi:type="H1" value="Yes"/>
+  <children xsi:type="H1" value="Some Time Passes"/>
+  <children xsi:type="H1" value="No"/>
+  <children xsi:type="H1" value="start"/>
 </DIV>
