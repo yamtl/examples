@@ -18,7 +18,7 @@ class Transient extends YAMTLModule {
 		ruleStore([
 			rule('Transitions2Div')
 				.priority(0)
-//				.isTransient()	
+				.isTransient()	
 				.in("f", flowchartPk.Flowchart)
 				.out("div", htmlPk.DIV, {
 					div.children.addAll(f.transitions)
