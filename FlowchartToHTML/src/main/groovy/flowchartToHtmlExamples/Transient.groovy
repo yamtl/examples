@@ -17,7 +17,7 @@ class Transient extends YAMTLModule {
 		
 		ruleStore([
 			rule('Transitions2Div')
-				.priority(0)
+				
 				.isTransient()
 				.endWith{count = div.children.size().toString()}
 				.in("f", flowchartPk.Flowchart)
@@ -29,7 +29,6 @@ class Transient extends YAMTLModule {
 					
 				
 			rule('TransitionsCount')
-				.priority(1)
 				.in("flowchart", flowchartPk.Flowchart)
 				.out("h1", htmlPk.H1, {
 					h1.value = "The ${flowchart.name} flowchart has ${count} transitions".toString()

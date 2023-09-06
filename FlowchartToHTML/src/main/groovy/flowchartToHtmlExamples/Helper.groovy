@@ -44,7 +44,7 @@ class Helper extends YAMTLModule {
 		helperStore([
 			staticAttribute('att', { 
 				// returns a name
-				return "decision"
+				return "Action"
 			}),
 			staticOperation('op', { argsMap ->
 				// returns the argument 'obj'
