@@ -13,11 +13,11 @@ public class InspireModelTest extends YAMTLModule {
 		YAMTLGroovyExtensions_dynamicEMF.init(this)
 		header().in("in", UMLPackage.eINSTANCE).out("out", UMLPackage.eINSTANCE)
 		ruleStore([
-            rule('Transition')
-                .in('c', UML.property)
+            rule('TraverseClass')
+                .in('c', UML.class_)
                 .query()
 				.endWith{
-					println("processed: ${c.name} : ${c.type?.name}")
+					println("processed: ${c.name}")
 				}
         ])
 	}
