@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.junit.jupiter.api.Test
 
-import flowchartToHtmlExamples.MultipleTargets
+import flowchartToHtmlExamples.ToMany
 import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 import yamtl.utils.EMFComparator

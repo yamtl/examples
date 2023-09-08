@@ -28,7 +28,7 @@ class KMEHR2FHIR extends YAMTLModule {
 			rule('DocumentRoot')
 				.in('s', kmehrPk.kmehr.DocumentRoot)
 				.out('t', fhirPk.DocumentRoot, {
-					t.bundle = s.kmehrmessage.folder.selectFirst(f | f.patient.isDefined())
+					t.bundle = s.kmehrmessage.folder.find(f | f.patient.isDefined())
 				}),
 			rule('Folder')
 				.in("s", kmehrPk.FolderType)

@@ -18,16 +18,10 @@ class Helper extends YAMTLModule {
         header().in('in', flowchartPk).out('out', htmlPk)
 
         ruleStore([
-
-            rule('Flowchart2Heading')
-                    .in("f", flowchartPk.Flowchart)
-                    .out("h1", htmlPk.H1, {
-                        h1.value = f.name
-                    }),
             rule('Action2Heading')
                     .in("a", flowchartPk.Action)
-                    .out("h1", htmlPk.H1, {
-                        h1.value = att // calls the attribute
+                    .out("h1", htmlPk.H1, {					
+						h1.value = att.toString()
                     }),
             rule('Decision2Heading')
                     .in("d", flowchartPk.Decision)
@@ -42,16 +36,21 @@ class Helper extends YAMTLModule {
         ])
 		
 		helperStore([
-			staticAttribute('att', { 
-				// returns a name
-				return "Action"
+			staticAttribute('att', { 				
+				def actionList = []
+				for (anAction in allInstances(flowchartPk.Action)) {
+					actionList.add(anAction.name)
+				}
+				
+				//returns all instances of Action elements from the source model
+				return actionList
 			}),
 			staticOperation('op', { argsMap ->
-				// returns the argument 'obj'
+				//returns the argument 'obj'
 				return argsMap.obj.name
 			}),
 			contextualOperation('c_op', { obj, argsMap ->
-				// returns the name of the contextual instance 'obj' appended by the argument 'suffix'
+				//returns the name of the contextual instance 'obj' and argument 'suffix'
 				return obj.name + argsMap['suffix']
 			})
 		])

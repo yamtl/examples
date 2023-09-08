@@ -22,6 +22,15 @@ eclipse {
 
 repositories {
 	maven{ url 'https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo' }
+	maven {
+		url 'https://git.kher.nl/api/v4/projects/124/packages/maven'
+	}
+	maven {
+		url "https://repo1.maven.org/maven2/"
+	}
+	maven {
+		url "https://repo.eclipse.org/content/repositories/atl-releases/"
+	}
 	mavenCentral()
 }
 
@@ -38,8 +47,8 @@ dependencies {
 	implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
 	
 	implementation 'io.github.atlresearch:emfmodelfuzzer:0.1'
-	implementation 'be.fgov.ehealth.emf.kmehr:be.fgov.ehealth.emf.kmehr:1.38.+'
-	implementation 'org.hl7.emf.fhir:org.hl7.emf.fhir:5.0.+'
+	implementation 'be.fgov.ehealth.emf.kmehr:be.fgov.ehealth.emf.kmehr:1.38.0'
+	implementation 'org.hl7.emf.fhir:org.hl7.emf.fhir:5.0.0'
 }
 
 

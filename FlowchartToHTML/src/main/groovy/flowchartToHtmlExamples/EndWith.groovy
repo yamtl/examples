@@ -14,11 +14,6 @@ class EndWith extends YAMTLModule {
 
 		ruleStore([
 				rule('Flowchart2Body') //Adds all flowchart elements into the HTML body
-						.endWith{
-							body.text = f.name //Body's text field has the flowchart name
-							body.children.add(b) //The newly created bold text is also added to the body
-							body.children.add(div)	//New div block is also added			 
-						}
 						.in("f", flowchartPk.Flowchart) //Input object is all flowchart elements
 						.out("b", htmlPk.B, { 
 							b.value = f.name //Flowchart's name is turned into bold
@@ -29,6 +24,11 @@ class EndWith extends YAMTLModule {
 						.out("body", htmlPk.BODY, {
 							body.children.addAll(f.nodes) //All flowchart nodes are added to the body
 						})
+						.endWith{
+							body.text = f.name //Body's text field has the flowchart name
+							body.children.add(b) //The newly created bold text is also added to the body
+							body.children.add(div)	//New div block is also added
+						}
 		])
 
 	}
