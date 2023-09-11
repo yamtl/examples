@@ -18,7 +18,8 @@ class Filter extends YAMTLModule {
 				rule('SelectedTransitions2Text')
 						.in("t", flowchartPk.Transition)
 						.filter{
-							
+							//Only transform those transitions
+							//that satisfy the following condition
 							t.source.name == "Is it really too early?"
 							
 						}

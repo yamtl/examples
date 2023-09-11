@@ -17,17 +17,13 @@ class Transient extends YAMTLModule {
 		
 		ruleStore([
 			rule('Transitions2Div')
-				
 				.isTransient()
-				.endWith{count = div.children.size().toString()}
 				.in("f", flowchartPk.Flowchart)
 				.out("div", htmlPk.DIV, {
 					div.children.addAll(f.transitions)
 					count += div.children.size()
 					println(count)
-				}),
-					
-				
+				}),			
 			rule('TransitionsCount')
 				.in("flowchart", flowchartPk.Flowchart)
 				.out("h1", htmlPk.H1, {

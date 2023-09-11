@@ -11,21 +11,31 @@ import org.junit.jupiter.api.Test
 
 import flowchartToHtmlExamples.Base
 import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.groovy.YAMTLGroovyExtensions
 import yamtl.utils.EMFComparator
 
 class MultipleTargetsTest extends YAMTLModule {
 	final BASE_PATH = 'model'
 
 	@Test
-	def void testMultipleTargets() {
-		// model transformation execution example
-		def src_metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/flowchart.ecore') as EPackage
-		def tgt_metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/html.ecore') as EPackage
+	def void testMultipleTargets() {	
+		// model transformation execution
+		def srcRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore')
+		def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 
-		def xform = new MultipleTargets(src_metamodel, tgt_metamodel)
+		def xform = new MultipleTargets(srcRes.contents[0], tgtRes.contents[0])
+		YAMTLGroovyExtensions.init(this)
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/multipleTargetsOutput.xmi'])
+		
+		// test assertion
+		def actualModel = xform.getOutputModel('out')
+		EMFComparator comparator = new EMFComparator();
+		// Load the expected model using the identical output metamodel from the transformation.
+		// Essentially, use the same in-memory metamodel.
+		xform.loadMetamodelResource(tgtRes)
+		def expectedResource = xform.loadModel(BASE_PATH + '/multipleTargetsExpectedOutput.xmi', false)
+		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
 	}
 }

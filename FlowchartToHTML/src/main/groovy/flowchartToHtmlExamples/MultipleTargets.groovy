@@ -14,6 +14,8 @@ class MultipleTargets extends YAMTLModule {
 
 		ruleStore([
 				rule('Action2Elements')
+						// This rule has 1 input pattern and 3 output patterns
+						// All output objects are mapped to the same input object
 						.in("a", flowchartPk.Action).filter { !a.outgoing.isEmpty() }
 						.out("title", htmlPk.H1, {
 							title.value = a.name

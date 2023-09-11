@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 
 import flowchartToHtmlExamples.ToMany
 import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.groovy.YAMTLGroovyExtensions
 import yamtl.utils.EMFComparator
 
 class QueryTest extends YAMTLModule {
@@ -21,11 +21,22 @@ class QueryTest extends YAMTLModule {
 
 	@Test
 	def void testQuery() {
-		// model transformation execution example
-		def mm = YAMTLModule.loadMetamodel(BASE_PATH + '/flowchart.ecore') as EPackage
-		def query = new Query(mm)
-		query.selectedExecutionPhases = ExecutionPhase.MATCH_ONLY
-		query.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
-		query.execute()
+		// model transformation execution
+		def srcRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore')
+
+		def xform = new Query(srcRes.contents[0])
+		YAMTLGroovyExtensions.init(this)
+		xform.selectedExecutionPhases = ExecutionPhase.MATCH_ONLY
+		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
+		xform.execute()
+		
+//		// test assertion
+//		def actualModel = xform.getOutputModel('out')
+//		EMFComparator comparator = new EMFComparator();
+//		// Load the expected model using the identical output metamodel from the transformation.
+//		// Essentially, use the same in-memory metamodel.
+//		xform.loadMetamodelResource(tgtRes)
+//		def expectedResource = xform.loadModel(BASE_PATH + '/filterExpectedOutput.xmi', false)
+//		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
 	}
 }

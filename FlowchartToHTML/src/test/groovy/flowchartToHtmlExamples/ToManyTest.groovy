@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 
 import flowchartToHtmlExamples.ToMany
 import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.groovy.YAMTLGroovyExtensions
 import yamtl.utils.EMFComparator
 
 class ToManyTest extends YAMTLModule {
@@ -20,16 +20,27 @@ class ToManyTest extends YAMTLModule {
 
     @Test
     def void testToMany() {
-        // model transformation execution example
-        def src_metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/flowchart.ecore') as EPackage
-        def tgt_metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/html.ecore') as EPackage
-
-        def xform = new ToMany(src_metamodel, tgt_metamodel)
+		// model transformation execution
+		def srcRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore')
+		def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 		
-		//Optionally, you can comment the above line and run the below line to check out toManyCap
-		//def xform = new ToManyCap(src_metamodel, tgt_metamodel)
-        xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
-        xform.execute()
-        xform.saveOutputModels(['out': BASE_PATH + '/toManyOutput.xmi'])
+		// Try the below line using the ToManyCap class instead of ToMany
+		def xform = new ToManyCap(srcRes.contents[0], tgtRes.contents[0])
+		YAMTLGroovyExtensions.init(this)
+		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
+		xform.execute()
+		
+		// If you are trying out the ToManyCap example change 'toManyOutput.xmi'
+		// to 'toManyCapOutput.xmi'
+		xform.saveOutputModels(['out': BASE_PATH + '/toManyCapOutput.xmi'])
+		
+//		// test assertion
+//		def actualModel = xform.getOutputModel('out')
+//		EMFComparator comparator = new EMFComparator();
+//		// Load the expected model using the identical output metamodel from the transformation.
+//		// Essentially, use the same in-memory metamodel.
+//		xform.loadMetamodelResource(tgtRes)
+//		def expectedResource = xform.loadModel(BASE_PATH + '/toManyExpectedOutput.xmi', false)
+//		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
     }
 }

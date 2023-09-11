@@ -2,14 +2,14 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="HTML">
   <DIV>
     <children xsi:type="H1" value="Wake up"/>
-    <children xsi:type="H1" value="Is it really too early?"/>
-    <children xsi:type="H1" value="Sleep"/>
-    <children xsi:type="H1" value="Get up"/>
-    <children xsi:type="H1" value="begin"/>
+    <children xsi:type="A" value="Next steps" ahref="Is it really too early?"/>
   </DIV>
-  <H1 value=""/>
-  <H1 value="Yes"/>
-  <H1 value="Some Time Passes"/>
-  <H1 value="No"/>
-  <H1 value="start"/>
+  <DIV>
+    <children xsi:type="H1" value="Sleep"/>
+    <children xsi:type="A" value="Next steps" ahref="Wake up"/>
+  </DIV>
+  <DIV>
+    <children xsi:type="H1" value="begin"/>
+    <children xsi:type="A" value="Next steps" ahref="Wake up"/>
+  </DIV>
 </xmi:XMI>
