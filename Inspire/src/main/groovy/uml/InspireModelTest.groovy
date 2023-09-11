@@ -3,7 +3,7 @@ package uml;
 import static yamtl.dsl.Rule.*
 
 import org.eclipse.uml2.uml.UMLPackage
-
+import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl
 import yamtl.core.YAMTLModule;
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
@@ -40,6 +40,9 @@ public class InspireModelTest extends YAMTLModule {
 		 * For now, ignore those errors as warnings and work with those elements that are parsed.
 		 * 
 		 */
+		
+		// register the UML resource factory to be able to parse UML models
+		xform.registerResourceFactory("uml", new UMLResourceFactoryImpl())
 		
 		xform.loadInputModels(["in":"./model/INSPIRE_Consolidated_UML_Model_ANNEX I-II-III-Only_IR_2023.2.uml"])
 		def res = xform.getModelResource("in")
