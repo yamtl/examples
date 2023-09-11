@@ -37,5 +37,6 @@ class EndWithTest extends YAMTLModule {
 		xform.loadMetamodelResource(tgtRes)
 		def expectedResource = xform.loadModel(BASE_PATH + '/endWithExpectedOutput.xmi', false)
 		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		assertTrue(assertionResult);
 	}
 }

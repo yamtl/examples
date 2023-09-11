@@ -37,5 +37,6 @@ class MultipleTargetsTest extends YAMTLModule {
 		xform.loadMetamodelResource(tgtRes)
 		def expectedResource = xform.loadModel(BASE_PATH + '/multipleTargetsExpectedOutput.xmi', false)
 		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		assertTrue(assertionResult);
 	}
 }

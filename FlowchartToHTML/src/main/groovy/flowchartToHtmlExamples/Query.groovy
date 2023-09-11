@@ -8,6 +8,9 @@ import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
 class Query extends YAMTLModule {
+	
+	public int count = 0
+	
     public Query(EPackage flowchartPk) {
         YAMTLGroovyExtensions_dynamicEMF.init(this)
 
@@ -19,6 +22,7 @@ class Query extends YAMTLModule {
                     .in('t', flowchartPk.Transition)
                     .query()
 					.endWith{
+						count++
 						println("processed successfully")
 					}
                     
