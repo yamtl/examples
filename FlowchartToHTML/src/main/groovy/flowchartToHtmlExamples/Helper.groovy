@@ -9,29 +9,24 @@ import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 import yamtl.groovy.YAMTLGroovyExtensions
 
-class BaseHelper extends YAMTLModule {
+class Helper extends YAMTLModule {
 	public int i = 0
 	
-    public BaseHelper(EPackage flowchartPk, EPackage htmlPk) {
+    public Helper(EPackage flowchartPk, EPackage htmlPk) {
         YAMTLGroovyExtensions_dynamicEMF.init(this)
 
         header().in('in', flowchartPk).out('out', htmlPk)
 
         ruleStore([
-
-            rule('Flowchart2Heading')
-                    .in("f", flowchartPk.Flowchart)
-                    .out("h1", htmlPk.H1, {
-                        h1.value = f.name
-                    }),
             rule('Action2Heading')
                     .in("a", flowchartPk.Action)
-                    .out("h1", htmlPk.H1, {
-                        h1.value = att // calls the attribute
+                    .out("h1", htmlPk.H1, {					
+						h1.value = att.toString()
                     }),
             rule('Decision2Heading')
                     .in("d", flowchartPk.Decision)
                     .out("h1", htmlPk.H1, {
+						println(d)
                         h1.value = op(['obj': d])
                     }),
             rule('Transition2Heading')
@@ -42,28 +37,24 @@ class BaseHelper extends YAMTLModule {
         ])
 		
 		helperStore([
-			staticAttribute('att', { 
-				// returns a name
-				"decision"
+			staticAttribute('att', { 				
+				def actionList = []
+				for (anAction in allInstances(flowchartPk.Action)) {
+					actionList.add(anAction.name)
+				}
+				
+				//returns all instances of Action elements from the source model
+				return actionList
 			}),
 			staticOperation('op', { argsMap ->
-				// returns the argument 'obj'
-				argsMap.obj.name
+				//returns the argument 'obj'
+				return argsMap.obj.name
 			}),
 			contextualOperation('c_op', { obj, argsMap ->
-				// returns the name of the contextual instance 'obj' appended by the argument 'suffix'
+				//returns the name of the contextual instance 'obj' and argument 'suffix'
 				return obj.name + argsMap['suffix']
 			})
 		])
 
     }
-	def static void main(String[] args) {
-		def mmF = BaseHelper.loadMetamodel('./model/flowchart.emf')
-		def mmH = BaseHelper.loadMetamodel('./model/html.emf')
-		def xform = new BaseHelper(mmF, mmH)
-		YAMTLGroovyExtensions.init(xform)
-		xform.loadInputModels(['in': './model/wakeup.xmi'])
-		xform.execute()
-		xform.saveOutputModels(['out': './model/base_helper_output.xmi'])
-	}
 }

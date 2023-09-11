@@ -27,12 +27,16 @@ class Override extends YAMTLModule {
 							
 							//If h1 value is inherited then it is not null, else it is null
 							if(h1.value !== null) {
+								//R.H.S h1.value is already calculated and inherited
 								h1.value = "Subflow " + h1.value
 							} else {
+								//h1 is newly initialised since rule is overridden
 								h1.value = "Subflow " + e.name //Overridden output object
 							}
-                        //Override the parent rule's h1 output object so the one in child rule is used    
-                        }).overriding() 
+                        //Override the parent rule so the child rule's h1 object is used    
+                        }).overriding()
+						//Try out the above transformation without the overriding() method
+						//and see the difference in inheritance behaviour   
 		])
 	}
 }

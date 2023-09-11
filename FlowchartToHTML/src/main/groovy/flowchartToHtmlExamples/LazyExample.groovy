@@ -26,6 +26,11 @@ class LazyExample extends YAMTLModule {
 				.in("in", flowchartPk.Node)
 				.out("out", htmlPk.H1, {
 					out.value = in.name
+				}),
+			rule('Transition2H1')
+				.in("t", flowchartPk.Transition)
+				.out("h1", htmlPk.H1, {
+					h1.value = t.name
 				})
 				
 				

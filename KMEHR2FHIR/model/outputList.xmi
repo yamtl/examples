@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<LinkedList xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="linkedlist" head="//@nodes.1">
+  <nodes name="N1"/>
+  <nodes name="N2" next="//@nodes.0"/>
+</LinkedList>

@@ -13,9 +13,9 @@ class BaseTest extends YAMTLModule {
 
     @Test
     def void testBase() {
-        // model transformation execution example
+        // model transformation execution
         def srcRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore') 
-        def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore') 
+        def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 
         def xform = new Base(srcRes.contents[0], tgtRes.contents[0])
 		YAMTLGroovyExtensions.init(this)
@@ -24,8 +24,8 @@ class BaseTest extends YAMTLModule {
         xform.saveOutputModels(['out': BASE_PATH + '/baseOutput.xmi'])
 		
 		// test assertion
-		def actualModel = xform.getOutputModel('out') 
-		EMFComparator comparator = new EMFComparator()
+		def actualModel = xform.getOutputModel('out')
+		EMFComparator comparator = new EMFComparator();
 		// Load the expected model using the identical output metamodel from the transformation.
 		// Essentially, use the same in-memory metamodel.
 		xform.loadMetamodelResource(tgtRes) 
