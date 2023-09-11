@@ -37,6 +37,7 @@ class MultipleSourcesTest extends YAMTLModule {
 		xform.loadMetamodelResource(tgtRes)
 		def expectedResource = xform.loadModel(BASE_PATH + '/multipleSourcesExpectedOutput.xmi', false)
 		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		assertTrue(assertionResult);
 		
 	}
 }

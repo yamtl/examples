@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.junit.jupiter.api.Test
+import java.lang.Integer
 
 import flowchartToHtmlExamples.ToMany
 import yamtl.core.YAMTLModule
@@ -30,13 +31,15 @@ class QueryTest extends YAMTLModule {
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
 		xform.execute()
 		
-//		// test assertion
-//		def actualModel = xform.getOutputModel('out')
-//		EMFComparator comparator = new EMFComparator();
-//		// Load the expected model using the identical output metamodel from the transformation.
-//		// Essentially, use the same in-memory metamodel.
-//		xform.loadMetamodelResource(tgtRes)
-//		def expectedResource = xform.loadModel(BASE_PATH + '/filterExpectedOutput.xmi', false)
-//		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		// test assertion
+		def transitionsProcessed = xform.count
+		EMFComparator comparator = new EMFComparator();
+		// Load the expected model using the identical output metamodel from the transformation.
+		// Essentially, use the same in-memory metamodel.
+		//xform.loadMetamodelResource(tgtRes)
+		int expectedTransitions = 5
+		def resultCheck =  Integer.compare(expectedTransitions, transitionsProcessed)		
+		def assertionResult = (resultCheck == 0)? true:false
+		assertTrue(assertionResult);
 	}
 }

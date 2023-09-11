@@ -16,7 +16,7 @@ class ToManyCap extends YAMTLModule {
                 rule('Action2Elements')
 						.toMany()
                         .in("a", flowchartPk.Action)
-						.toManyCap(3)
+						.toManyCap({3})
                         .out("title", htmlPk.H1, {
                             title.value = fetch(a.name, title, 0)
                         })
