@@ -1,15 +1,9 @@
 package flowchartToHtmlExamples
 import static org.junit.Assert.assertTrue;
 
-import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.junit.jupiter.api.Test
 
-import flowchartToHtmlExamples.Base
 import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions
 import yamtl.utils.EMFComparator
