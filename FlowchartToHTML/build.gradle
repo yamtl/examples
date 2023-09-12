@@ -27,7 +27,7 @@ repositories {
 
 
 dependencies {
-	implementation 'yamtl:yamtl:0.4.16'
+	implementation 'yamtl:yamtl:0.4.17'
 	implementation 'org.apache.groovy:groovy-all:4.0.11'
 	implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
 	implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
