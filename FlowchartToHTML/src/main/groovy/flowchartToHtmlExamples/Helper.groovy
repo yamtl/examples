@@ -26,7 +26,6 @@ class Helper extends YAMTLModule {
             rule('Decision2Heading')
                     .in("d", flowchartPk.Decision)
                     .out("h1", htmlPk.H1, {
-						println(d)
                         h1.value = op(['obj': d])
                     }),
             rule('Transition2Heading')
