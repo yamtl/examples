@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EPackage
 import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
-class Transient extends YAMTLModule {
-	public Transient(EPackage flowchartPk, EPackage htmlPk) {
+class TransientNonUnique extends YAMTLModule {
+	public TransientNonUnique(EPackage flowchartPk, EPackage htmlPk) {
 		YAMTLGroovyExtensions_dynamicEMF.init(this)
 
 		header().in("in", flowchartPk).out("out", htmlPk)
@@ -15,6 +15,7 @@ class Transient extends YAMTLModule {
 		// an attribute shared among rules
 		def count = 0
 		
+		// These rules have a problem because both rules can match the same Flowchart object
 		ruleStore([
 			rule('Transitions2Div')
 				.isTransient()

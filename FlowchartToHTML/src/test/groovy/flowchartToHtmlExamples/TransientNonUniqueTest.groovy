@@ -15,7 +15,7 @@ import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions
 import yamtl.utils.EMFComparator
 
-class TransientTest extends YAMTLModule {
+class TransientNonUniqueTest extends YAMTLModule {
 
 	final BASE_PATH = 'model'
 
@@ -25,7 +25,7 @@ class TransientTest extends YAMTLModule {
 		def srcRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore')
 		def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 
-		def xform = new Transient(srcRes.contents[0], tgtRes.contents[0])
+		def xform = new TransientNonUnique(srcRes.contents[0], tgtRes.contents[0])
 		YAMTLGroovyExtensions.init(this)
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
 		xform.execute()
