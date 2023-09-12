@@ -20,11 +20,11 @@ class ModuleCompositionTest extends YAMTLModule {
 	@Test
 	def void testModuleComposition() {
 		// model transformation execution example
-		def src_metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/flowchart.ecore') as EPackage
-		def tgt_metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/html.ecore') as EPackage
+		def sRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore') as EPackage
+		def tRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore') as EPackage
 
-		def xform = new ModuleComposition(src_metamodel, tgt_metamodel)
-		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
+		def xform = new ModuleComposition(sRes.contents[0], tRes.contents[0])
+		xform.loadInputModels(['in': BASE_PATH + '/wakeup_with_subflow.xmi'])
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/moduleCompositionOutput.xmi'])
 	}
