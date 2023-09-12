@@ -31,15 +31,15 @@ class ToManyTest extends YAMTLModule {
 		
 		// If you are trying out the ToManyCap example change 'toManyOutput.xmi'
 		// to 'toManyCapOutput.xmi'
-		xform.saveOutputModels(['out': BASE_PATH + '/toManyCapOutput.xmi'])
+		xform.saveOutputModels(['out': BASE_PATH + '/toManyOutput.xmi'])
 		
-//		// test assertion
-//		def actualModel = xform.getOutputModel('out')
-//		EMFComparator comparator = new EMFComparator();
-//		// Load the expected model using the identical output metamodel from the transformation.
-//		// Essentially, use the same in-memory metamodel.
-//		xform.loadMetamodelResource(tgtRes)
-//		def expectedResource = xform.loadModel(BASE_PATH + '/toManyExpectedOutput.xmi', false)
-//		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		// test assertion
+		def actualModel = xform.getOutputModel('out')
+		EMFComparator comparator = new EMFComparator();
+		// Load the expected model using the identical output metamodel from the transformation.
+		// Essentially, use the same in-memory metamodel.
+		xform.loadMetamodelResource(tgtRes)
+		def expectedResource = xform.loadModel(BASE_PATH + '/toManyExpectedOutput.xmi', false)
+		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
     }
 }

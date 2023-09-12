@@ -27,7 +27,6 @@ class Transient extends YAMTLModule {
 				.in("f", flowchartPk.Flowchart)
 				.out("h1", htmlPk.H1, {
 					h1.value = "The ${f.name} flowchart has ${count} transitions".toString()
-					println(h1.value)
 				})
 		])
 	}

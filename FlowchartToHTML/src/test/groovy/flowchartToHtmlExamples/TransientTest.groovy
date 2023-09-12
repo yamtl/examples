@@ -30,13 +30,13 @@ class TransientTest extends YAMTLModule {
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/transientOutput.xmi'])
 		
-//		// test assertion
-//		def actualModel = xform.getOutputModel('out')
-//		EMFComparator comparator = new EMFComparator();
-//		// Load the expected model using the identical output metamodel from the transformation.
-//		// Essentially, use the same in-memory metamodel.
-//		xform.loadMetamodelResource(tgtRes)
-//		def expectedResource = xform.loadModel(BASE_PATH + '/transientExpectedOutput.xmi', false)
-//		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		// test assertion
+		def actualModel = xform.getOutputModel('out')
+		EMFComparator comparator = new EMFComparator();
+		// Load the expected model using the identical output metamodel from the transformation.
+		// Essentially, use the same in-memory metamodel.
+		xform.loadMetamodelResource(tgtRes)
+		def expectedResource = xform.loadModel(BASE_PATH + '/transientExpectedOutput.xmi', false)
+		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
 	}
 }
