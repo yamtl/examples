@@ -1,0 +1,24 @@
+@namespace(uri="http://xtendtl/StateMachine", prefix="sm")
+package stateMachine;
+
+class StateMachine {
+  val ModelElem[*] elements;
+}
+
+class ModelElem {
+
+}
+
+class State extends ModelElem {
+  attr String name;
+  attr String kind;
+  attr boolean isActive;
+}
+
+class Transition extends ModelElem {
+  attr String name;
+  attr String guard;
+  ref State[1] source;
+  ref State[1] target;
+}
+
