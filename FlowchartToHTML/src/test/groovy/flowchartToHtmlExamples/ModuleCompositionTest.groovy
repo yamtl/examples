@@ -20,12 +20,22 @@ class ModuleCompositionTest extends YAMTLModule {
 	@Test
 	def void testModuleComposition() {
 		// model transformation execution example
-		def sRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore') as EPackage
-		def tRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore') as EPackage
+		def sRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore')
+		def tRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 
 		def xform = new ModuleComposition(sRes.contents[0], tRes.contents[0])
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup_with_subflow.xmi'])
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/moduleCompositionOutput.xmi'])
+		
+		// test assertion
+		def actualModel = xform.getOutputModel('out')
+		EMFComparator comparator = new EMFComparator();
+		// Load the expected model using the identical output metamodel from the transformation.
+		// Essentially, use the same in-memory metamodel.
+		xform.loadMetamodelResource(tRes)
+		def expectedResource = xform.loadModel(BASE_PATH + '/compositionExpectedOutput.xmi', false)
+		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		assertTrue(assertionResult)
 	}
 }
