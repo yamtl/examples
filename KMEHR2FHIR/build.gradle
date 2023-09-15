@@ -20,19 +20,31 @@ eclipse {
 }
 
 
+
 repositories {
-	maven{ url 'https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo' }
-	maven {
-		url 'https://git.kher.nl/api/v4/projects/124/packages/maven'
-	}
-	maven {
-		url "https://repo1.maven.org/maven2/"
-	}
-	maven {
-		url "https://repo.eclipse.org/content/repositories/atl-releases/"
-	}
-	mavenCentral()
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+	maven{ url 'https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo' }
+    maven {
+        url 'https://git.kher.nl/api/v4/projects/124/packages/maven'
+    }
+    maven {
+        url "https://repo1.maven.org/maven2/"
+    }
+    maven {
+        url "https://repo.eclipse.org/content/repositories/atl-releases/"
+    }
+    maven {
+        url "https://maven.pkg.github.com/ATL-Research/*"
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+    maven { url "https://raw.github.com/dwagelaar/kmehr-emf/repository/"}
+    maven { url "https://raw.github.com/dwagelaar/fhir-xml-emf/repository/"}
 }
+
 
 
 
