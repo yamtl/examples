@@ -1,0 +1,38 @@
+@namespace(uri="http://org.eclipse.viatra/model/deployment", prefix="deployment")
+package deployment;
+
+class DeploymentHost extends DeploymentElement {
+  val DeploymentApplication[*] applications;
+  id attr String ip;
+}
+
+class DeploymentApplication extends DeploymentElement {
+  val DeploymentBehavior behavior;
+  attr String ~id;
+}
+
+class DeploymentBehavior extends DeploymentElement {
+  val BehaviorState[*] states;
+  val BehaviorTransition[*] transitions;
+
+  @GenModel(documentation="The initial state of the state machine will be the first current behavior state.")
+  ref BehaviorState current;
+}
+
+class BehaviorState extends DeploymentElement {
+  ref BehaviorTransition[*] outgoing;
+}
+
+class BehaviorTransition extends DeploymentElement {
+  ref BehaviorState to;
+  ref BehaviorTransition[*] trigger;
+}
+
+class Deployment {
+  val DeploymentHost[*] hosts;
+}
+
+abstract interface DeploymentElement {
+  attr String description;
+}
+

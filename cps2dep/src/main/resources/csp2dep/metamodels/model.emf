@@ -1,0 +1,191 @@
+@Ecore(settingDelegates="org.eclipse.viatra.query.querybasedfeature")
+@namespace(uri="http://org.eclipse.viatra/model/cps", prefix="cps")
+package cyberPhysicalSystem;
+
+@GenModel(documentation="An identifiable element of the CPS domain has a unique identifier.")
+abstract interface Identifiable {
+
+  @GenModel(documentation="An identifier is used as both a user-facing name and an identifier for serialization. Must be unique.")
+  id attr String identifier;
+}
+
+@GenModel(documentation="The cyber-physical system instance acts as a container of a cps model.")
+class CyberPhysicalSystem extends Identifiable {
+  attr String dbUrl;
+  val ApplicationType[*]#cps appTypes;
+  val Request[*] requests;
+  val HostType[*]#cps hostTypes;
+}
+
+@GenModel(documentation="A descriptor for a class of applications.")
+class ApplicationType extends Identifiable {
+
+  @GenModel(documentation="Where to look for the executable file.")
+  attr String exeFileLocation;
+
+  @GenModel(documentation="The type of the executable file.")
+  attr String exeType;
+  attr String zipFileUrl;
+
+  @GenModel(documentation="The resource requirements of the application are stored in this reference.")
+  val ResourceRequirement[*] requirements;
+
+  @GenModel(documentation="A reference to the container instance.")
+  ref CyberPhysicalSystem[1]#appTypes cps;
+
+  @GenModel(documentation="All known instances of this type.")
+  val ApplicationInstance[*]#type instances;
+
+  @GenModel(documentation="An optional state machine describing the behavior of the application.")
+  val StateMachine behavior;
+
+  @GenModel(documentation="The size of the executable in bytes.")
+  attr long exeFileSize;
+}
+
+@GenModel(documentation="A class describing common properties of a set of hosts.")
+class HostType extends Identifiable {
+
+  @GenModel(documentation="If a host instance does not set the total CPU attribute, this default value should be used instead.")
+  attr int defaultCpu;
+
+  @GenModel(documentation="If a host instance does not set the total RAM attribute, this default value should be used instead.")
+  attr int defaultRam;
+
+  @GenModel(documentation="If a host instance does not set the total HDD attribute, this default value should be used instead.")
+  attr int defaultHdd;
+
+  @GenModel(documentation="A reference to the container model.")
+  ref CyberPhysicalSystem[1]#hostTypes cps;
+
+  @GenModel(documentation="A list to the instances of the selected host type.")
+  val HostInstance[*] instances;
+}
+
+@GenModel(documentation="This class represents the requirements of a given application type.")
+class ResourceRequirement extends Identifiable {
+
+  @GenModel(documentation="This field stores the number of CPUs required in a non-negative number.")
+  attr int requiredCpu;
+
+  @GenModel(documentation="This field stores the amount of RAM required in MB as a non-negative number.")
+  attr int requiredRam;
+
+  @GenModel(documentation="This field stores the amount of persistent storage required in MB as a non-negative number.")
+  attr int requiredHdd;
+
+  @GenModel(documentation="This field represents the required host type.")
+  ref HostType[1] type;
+}
+
+@GenModel(documentation="Represents a single host in the system")
+class HostInstance extends Identifiable {
+
+  @GenModel(documentation="The IP address of the given host instance. Must be unique.")
+  attr String nodeIp;
+
+  @GenModel(documentation="The number of CPUs that are not bound for any applications.")
+  attr int availableCpu;
+
+  @GenModel(documentation="The amount of RAM not bound for any applications.")
+  attr int availableRam;
+
+  @GenModel(documentation="The amount of persistent storage not bound for any applications.")
+  attr int availableHdd;
+
+  @GenModel(documentation="The total number of CPUs available. If unspecified, the default value from the corresponding host type should be used.")
+  attr int totalCpu;
+
+  @GenModel(documentation="The total amount of RAM available. If unspecified, the default value from the corresponding host type should be used.")
+  attr int totalRam;
+
+  @GenModel(documentation="The total amount of persistent storage available. If unspecified, the default value from the corresponding host type should be used.")
+  attr int totalHdd;
+
+  @GenModel(documentation="All application instances running on this host.")
+  ref ApplicationInstance[*]#allocatedTo applications;
+
+  @GenModel(documentation="This reference enumerates host instances the current instance needs to communicate with.")
+  ref HostInstance[*] communicateWith;
+}
+
+@GenModel(documentation="Represents an application instance.")
+class ApplicationInstance extends Identifiable {
+
+  @GenModel(documentation="Represents whether the application is running.")
+  attr AppState state;
+  attr String dbUser;
+  attr String dbPassword;
+
+  @GenModel(documentation="The host instances this application is running on.")
+  ref HostInstance#applications allocatedTo;
+
+  @GenModel(documentation="Other application instances the current one depends on.")
+  ref ApplicationInstance[*] dependOn;
+
+  @GenModel(documentation="The type of the application.")
+  ref ApplicationType[1]#instances type;
+
+  @GenModel(documentation="The priority of the application; larger number means higher priority.")
+  attr int priority;
+}
+
+@GenModel(documentation="Represents whether an application is running.")
+enum AppState {
+  Running = 0;
+  Stopped = 0;
+}
+
+class Request extends Identifiable {
+  unsettable val Requirement[*]#request requirements;
+}
+
+@GenModel(documentation="Represents a requested requirement.")
+class Requirement extends Identifiable {
+
+  @GenModel(documentation="The number of instances required.")
+  attr int count;
+  ref Request[1]#requirements request;
+
+  @GenModel(documentation="The type of required application.")
+  unsettable ref ApplicationType[1] type;
+
+  @GenModel(documentation="The concrete application instances fulfilling the original requirement.")
+  ref ApplicationInstance[*] applications;
+  attr boolean mandatory = true;
+  attr int[*] availablePorts;
+}
+
+@GenModel(documentation="A state machine is used to define the behavior of a given application type.")
+class StateMachine extends Identifiable {
+
+  @GenModel(documentation="All states the state machine uses.")
+  val State[*] states;
+
+  @GenModel(documentation="The specific initial state of the state machine; should be a member of the states reference as well.")
+  ref State initial;
+}
+
+@GenModel(documentation="A state of a state machine.")
+class State extends Identifiable {
+
+  @GenModel(documentation="A list of all transitions starting from the current state.")
+  val Transition[*] outgoingTransitions;
+}
+
+@GenModel(documentation="A transition in a state machine.")
+class Transition extends Identifiable {
+
+  @GenModel(documentation="The state this transition ends in.")
+  ref State targetState;
+
+  @GenModel(documentation="The action may specify either waiting for a signal with a given ID or sending a signal with a given ID to another application with a given type ID.
+- Use waitForSignal(signal) to specify waiting for signal
+- Use sendSignal(app, signal) to specify sending a signal to an app
+
+Restrictions:
+- Only one action is allowed in a transition
+- There can be only a single application instance for the given application type ID on host instances that the host on which the sending application instance is allocated to can communicate with.")
+  attr String action;
+}
+

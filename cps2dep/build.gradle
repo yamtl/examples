@@ -1,0 +1,76 @@
+plugins {
+	id "org.xtext.xtend" version "1.0.21" // 24-01-2018
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+eclipse {
+	project {
+	  name = 'yamtl.examples.mapping.batch.cps2dep'
+	  buildCommand 'org.eclipse.jdt.core.javabuilder'
+	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+	  buildCommand 'org.eclipse.wst.common.project.facet.core.builder'
+
+	  natures 'org.eclipse.jdt.core.javanature',
+		  'org.eclipse.buildship.core.gradleprojectnature',
+		  'org.eclipse.wst.common.project.facet.core.nature',
+		  'org.eclipse.xtext.ui.shared.xtextNature',
+		  'org.eclipse.pde.PluginNature'
+	}
+}
+
+repositories {
+	maven {
+		url "https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo"
+	}
+	mavenCentral()
+    jcenter()
+}
+
+
+ext {
+    gradleVer = '4.6'
+    xtendVersion = '2.13.0'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = gradleVer
+}
+
+mainClassName='cps2dep.Runner'
+
+// XTEND: configures output directories for generated java
+xtend {
+	sourceSets {
+		main.xtendOutputDir = 'src/main/xtend-gen'
+		test.xtendOutputDir = 'src/test/xtend-gen'
+	}
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = [
+				'src/main/java',
+				'src/main/emf-gen',
+				'src/main/xtend-gen'
+			]
+		}
+	}
+}
+
+dependencies {
+	compile "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion"
+//	compile "yamtl:yamtl:0.0.1-SNAPSHOT"
+	compile files('lib/yamtl-all-0.0.1-SNAPSHOT.jar')
+	compile "com.google.guava:guava-testlib:24.1-jre"
+	// for using @Accessors
+	compile "org.eclipse.xtend:org.eclipse.xtend.lib.macro:2.13.0"
+}
+
+
+
