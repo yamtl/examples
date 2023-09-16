@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:CD="org.fma.fmaClass">
+  <CD:Class name="Item">
+    <attr name="product" multiValued="false" type="/2"/>
+    <attr name="date" type="/2"/>
+  </CD:Class>
+  <CD:Class name="Order">
+    <attr name="items" multiValued="true" type="/0"/>
+  </CD:Class>
+  <CD:DataType name="String"/>
+</xmi:XMI>
