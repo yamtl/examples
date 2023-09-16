@@ -1,12 +1,10 @@
 plugins {
-	id "org.xtext.xtend" version "1.0.21" // 24-01-2018
+	id "org.xtext.xtend" version "3.0.2"
+	id 'java'
+	id 'eclipse'
+	id 'application'
 }
 
-apply plugin: 'application'
-apply plugin: 'java'
-apply plugin: 'eclipse'
-
-sourceCompatibility = 1.8
 
 eclipse {
 	project {
@@ -25,21 +23,10 @@ eclipse {
 
 repositories {
 	maven {
-		url "https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo"
+		url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo"
 	}
 	mavenLocal()
 	mavenCentral()
-    jcenter()
-}
-
-
-ext {
-    gradleVer = '4.6'
-    xtendVersion = '2.13.0'
-}
-
-task wrapper(type: Wrapper) {
-	gradleVersion = gradleVer
 }
 
 
@@ -88,14 +75,11 @@ configurations {
 }
 
 compileJava {
-	sourceCompatibility="1.8"
-	targetCompatibility="1.8"
+	sourceCompatibility="17"
   
 	doLast{
 		ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath )
 		ant.iajc(
-			source:"1.8",
-			target:"1.8",
 			destDir: sourceSets.main.output.classesDir.absolutePath,
 			inpath: configurations.ajInpath.asPath,
 			maxmem: "512m",
@@ -113,15 +97,21 @@ compileJava {
   }
 
 dependencies {
-	compile "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion"
-	compile "yamtl:yamtl:0.0.2-SNAPSHOT"
-	compile 'org.eclipse.emf:org.eclipse.emf.ecore.change:2.11+'
+	implementation 'yamtl:yamtl:0.4.17'
+	implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
 	
 	// AspectJ
-	ajc "org.aspectj:aspectjtools:1.9.1"
-	compile("org.aspectj:aspectjrt:1.9.1")
-	compile("org.aspectj:aspectjweaver:1.9.1")
-	aspects "yamtl:yamtl:0.0.2-SNAPSHOT"
-	ajInpath "yamtl:yamtl:0.0.2-SNAPSHOT"
+	ajc "org.aspectj:aspectjtools:1.9.20.1"
+	implementation "org.aspectj:aspectjrt:1.9.20.1"
+	implementation "org.aspectj:aspectjweaver:1.9.20.1"
+	aspects "yamtl:yamtl:0.4.17"
+	ajInpath "yamtl:yamtl:0.4.17"
 }
 
+test {
+	useJUnitPlatform()
+}
+
+task junit4Test(type: Test) {
+	useJUnit()
+}
