@@ -57,7 +57,7 @@ class Test_cd2db_incr_onthefly {
 		var String inputModelPath = '''src/main/java/cd2db/sourceModel.xmi'''
 		var String deltaName = 'delta2'
 		
-		val xform = new cd2db_attribute_helper()
+		val xform = new cd2db()
 		
 		xform.adviseWithinThisNamespaceExpressions(#['CD.impl.*']);
 		xform.executionMode = ExecutionMode.INCREMENTAL
@@ -100,7 +100,7 @@ class Test_cd2db_incr_onthefly {
 		var String inputModelPath = '''src/main/java/cd2db/sourceModel.xmi'''
 		var String deltaName = 'delta3'
 		
-		val xform = new cd2db_attribute_helper()
+		val xform = new cd2db()
 		
 		xform.adviseWithinThisNamespaceExpressions(#['CD.impl.*']);
 		xform.executionMode = ExecutionMode.INCREMENTAL
@@ -148,7 +148,7 @@ class Test_cd2db_incr_onthefly {
 		var String inputModelPath = '''src/main/java/cd2db/sourceModel.xmi'''
 		var String deltaName = 'delta4'
 		
-		val xform = new cd2db_attribute_helper()
+		val xform = new cd2db()
 		
 		xform.adviseWithinThisNamespaceExpressions(#['CD.impl.*']);
 		xform.executionMode = ExecutionMode.INCREMENTAL
@@ -190,7 +190,7 @@ class Test_cd2db_incr_onthefly {
 		var String inputModelPath = '''src/main/java/cd2db/sourceModel.xmi'''
 		var String deltaName = 'delta5'
 		
-		val xform = new cd2db_attribute_helper()
+		val xform = new cd2db()
 		
 		xform.adviseWithinThisNamespaceExpressions(#['CD.impl.*']);
 		xform.executionMode = ExecutionMode.INCREMENTAL
@@ -234,7 +234,7 @@ class Test_cd2db_incr_onthefly {
 		var String inputModelPath = '''src/main/java/cd2db/sourceModel.xmi'''
 		var String deltaName = 'delta6'
 		
-		val xform = new cd2db_attribute_helper()
+		val xform = new cd2db()
 		
 		xform.adviseWithinThisNamespaceExpressions(#['CD.impl.*']);
 		xform.executionMode = ExecutionMode.INCREMENTAL

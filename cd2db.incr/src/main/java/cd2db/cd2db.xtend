@@ -25,7 +25,6 @@ class cd2db extends YAMTLModule {
 					t.name = c.name
 					t.col += c.attr.fetch as List<Column>
 					t.col += pk_col
-					println(c.toString)
 					val listIncoming = c.incomingReferences
 					val list = listIncoming.fetch('fk_col', 'ReferenceToFkColumn') 
 						as List<Column>

@@ -31,7 +31,6 @@ class cd2db_attribute_helper extends YAMTLModule {
 					t.name = c.name
 					t.col += c.attr.fetch as List<Column>
 					t.col += pk_col
-					val c = c()
 					val list = classToIncomingReferences.get(c).fetch('fk_col','ReferenceToFkColumn') as List<Column>
 					if (list !== null)
 						t.col += list
