@@ -9,20 +9,18 @@ import yamtl.utils.EMFComparator
 import org.junit.jupiter.api.Test
 import static org.junit.jupiter.api.Assertions.assertTrue
 
-class Test_cd2db_incr_offline {
+class Test_cd2db_incr_offline_withHelper {
 	@Test
 	def void testDelta1() {
 		var String inputModelPath = '''src/main/java/cd2db/sourceModel.xmi'''
 				
 		// TODO: delta2 is not loading correctly probably due to the reference to the source model
 		for (deltaName: #['delta1', 'delta3', 'delta4', 'delta5', 'delta6']) {
-
-
 			// DELTA PROPAGATION
 			var String forwardDeltaPath
 			var String outputModelPath
 	
-			val xform = new cd2db()
+			val xform = new cd2db_attribute_helper()
 			xform.adviseWithinThisNamespaceExpressions(List.of("CD.impl.*"));
 			xform.executionMode = ExecutionMode.INCREMENTAL
 			
