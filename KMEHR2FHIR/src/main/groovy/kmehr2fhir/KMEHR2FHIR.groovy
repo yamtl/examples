@@ -26,7 +26,7 @@ class KMEHR2FHIR extends YAMTLModule {
 		 */
 		ruleStore([
 			rule('DocumentRoot')
-				.in('s', kmehrPk.kmehr.DocumentRoot)
+				.in('s', kmehrPk.DocumentRoot)
 				.out('t', fhirPk.DocumentRoot, {
 					t.bundle = s.kmehrmessage.folder.find(f | f.patient.isDefined())
 				}),
