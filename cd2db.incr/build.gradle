@@ -2,7 +2,6 @@ plugins {
 	id "org.xtext.xtend" version "3.0.2"
 	id 'java'
 	id 'eclipse'
-	id 'application'
 }
 
 
@@ -58,49 +57,6 @@ sourceSets {
 
 
 
-// 	INCREMENTAL SETUP
-mainClassName = "cd2db.Runner_incr_delta1"
-//mainClassName = "cd2db.Runner_incr_delta2"
-//mainClassName = "cd2db.Runner_incr_delta3"
-//mainClassName = "cd2db.Runner_incr_delta4"
-//mainClassName = "cd2db.Runner_incr_delta5"
-//mainClassName = "cd2db.Runner_incr_delta6"
-applicationDefaultJvmArgs = ["-Xmx12288m"]
-
-
-//// ASPECTJ
-//configurations {
-//	ajc
-//	aspects
-//	aspectCompile
-//	ajInpath
-//	compile {
-//		extendsFrom aspects
-//	}
-//}
-//
-//compileJava {
-//	sourceCompatibility="17"
-//  
-//	doLast{
-//		ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath )
-//		ant.iajc(
-//			destDir: sourceSets.main.output.classesDir.absolutePath,
-//			inpath: configurations.ajInpath.asPath,
-//			maxmem: "512m",
-//			fork: "true",
-//			aspectPath:configurations.aspects.asPath,
-//			sourceRootCopyFilter:"**/.git/*,**/*.java",
-//			classpath:"${configurations.compile.asPath};${configurations.aspectCompile.asPath}"){
-//			sourceroots{
-//				sourceSets.main.java.srcDirs.each{
-//					pathelement(location:it.absolutePath)
-//				}
-//			}
-//		}
-//	}
-//  }
-
 dependencies {
 	implementation 'yamtl:yamtl:0.4.20'
 	implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
@@ -111,13 +67,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-aop:3.1.0'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-	
-	// AspectJ
-//	ajc "org.aspectj:aspectjtools:1.9.20.1"
-	implementation "org.aspectj:aspectjrt:1.9.20.1"
-//	implementation "org.aspectj:aspectjweaver:1.9.20.1"
-//	aspects "yamtl:yamtl:0.4.17"
-//	ajInpath "yamtl:yamtl:0.4.17"
 }
 
 test {

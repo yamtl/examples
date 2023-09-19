@@ -32,7 +32,7 @@ class Test_cd2db_incr_offline_withHelper {
 			
 			println('''PROCESSING «deltaName»''')
 			forwardDeltaPath = '''src/main/java/cd2db/deltas/«deltaName».forward.xmi'''
-			xform.loadDelta('cd', deltaName, forwardDeltaPath, new Timestamp(System.nanoTime()))
+			xform.loadDelta('cd', deltaName, forwardDeltaPath)
 			xform.applyAndPropagateDelta('cd', deltaName)
 	
 	

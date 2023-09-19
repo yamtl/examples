@@ -9,6 +9,7 @@ import yamtl.core.YAMTLModule.ExecutionMode
 import yamtl.utils.EMFComparator
 
 import static org.junit.jupiter.api.Assertions.assertTrue
+import yamtl.core.YAMTLModule.IncrementalGranularity
 
 class Test_cd2db_incr_onthefly {
 	@Test
