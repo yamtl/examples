@@ -1,32 +1,12 @@
 plugins {
 	id "org.xtext.xtend" version "3.0.2"
-	id 'java'
-	id 'eclipse'
 }
 
-
-eclipse {
-	project {
-	  name = 'cd2db.incr'
-	  buildCommand 'org.eclipse.jdt.core.javabuilder'
-	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
-	  buildCommand 'org.eclipse.wst.common.project.facet.core.builder'
-
-	  natures 'org.eclipse.jdt.core.javanature',
-		  'org.eclipse.buildship.core.gradleprojectnature',
-		  'org.eclipse.wst.common.project.facet.core.nature',
-		  'org.eclipse.xtext.ui.shared.xtextNature',
-		  'org.eclipse.pde.PluginNature'
-	}
-}
-
-repositories {
-	maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo"}
-	mavenCentral()
-}
-
-
-
+eclipse.project.name = 'cd2db.incr'
+eclipse.project.natures(
+	'org.eclipse.xtext.ui.shared.xtextNature',
+    'org.eclipse.pde.PluginNature')
+	
 // XTEND: configures output directories for generated java
 xtend {
 	sourceSets {
@@ -56,23 +36,3 @@ sourceSets {
 }	
 
 
-
-dependencies {
-	implementation 'yamtl:yamtl:0.4.20'
-	implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
-	implementation "org.eclipse.xtend:org.eclipse.xtend.lib:2.31.0"
-	implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
-	implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
-	implementation "org.eclipse.emf:org.eclipse.emf.ecore.change:2.14.0"
-	implementation 'org.springframework.boot:spring-boot-starter-aop:3.1.0'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-}
-
-test {
-	useJUnitPlatform()
-}
-
-task junit4Test(type: Test) {
-	useJUnit()
-}

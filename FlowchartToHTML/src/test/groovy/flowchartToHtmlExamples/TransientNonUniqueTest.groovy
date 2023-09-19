@@ -1,6 +1,7 @@
 package flowchartToHtmlExamples
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThrows;
 
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EPackage
@@ -16,7 +17,7 @@ import yamtl.utils.EMFComparator
 
 class TransientNonUniqueTest extends YAMTLModule {
 
-	final BASE_PATH = 'model'
+    final BASE_PATH = 'model'
 
 	@Test
 	def void testTransient() {
@@ -27,16 +28,10 @@ class TransientNonUniqueTest extends YAMTLModule {
 		def xform = new TransientNonUnique(srcRes.contents[0], tgtRes.contents[0])
 		YAMTLGroovyExtensions.init(this)
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
-		xform.execute()
-		xform.saveOutputModels(['out': BASE_PATH + '/transientOutput.xmi'])
 		
-//		// test assertion
-//		def actualModel = xform.getOutputModel('out')
-//		EMFComparator comparator = new EMFComparator();
-//		// Load the expected model using the identical output metamodel from the transformation.
-//		// Essentially, use the same in-memory metamodel.
-//		xform.loadMetamodelResource(tgtRes)
-//		def expectedResource = xform.loadModel(BASE_PATH + '/transientExpectedOutput.xmi', false)
-//		def assertionResult =  comparator.equals(expectedResource.getContents(), actualModel.getContents())
+		def exception = assertThrows(RuntimeException) {
+			xform.execute()
+		}
+		assertTrue(exception.message.contains("enables at least two different rules"))
 	}
 }
