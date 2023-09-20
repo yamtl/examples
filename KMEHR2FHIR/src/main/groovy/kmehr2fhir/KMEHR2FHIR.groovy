@@ -1,9 +1,11 @@
 package kmehr2fhir
 
-import static yamtl.dsl.Rule.*
-
 import org.eclipse.emf.ecore.EPackage
+import org.hl7.emf.fhir.BundleType
+import org.hl7.emf.fhir.BundleTypeEnum
 
+import static yamtl.dsl.Rule.*
+import static yamtl.dsl.Helper.*
 import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
@@ -36,7 +38,7 @@ class KMEHR2FHIR extends YAMTLModule {
 					s.patient.isDefined()
 				})
 				.out("bt", fhirPk.BundleType, {
-					bt.value = fhirPk.BundleTypeEnum.document
+					(bt as BundleType).value = BundleTypeEnum.DOCUMENT
 				})
 				.out("t", fhirPk.Bundle, {
 					t.type = bt
