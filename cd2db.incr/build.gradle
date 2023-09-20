@@ -1,36 +1,12 @@
 plugins {
 	id "org.xtext.xtend" version "3.0.2"
-	id 'java'
-	id 'eclipse'
-	id 'application'
 }
 
-
-eclipse {
-	project {
-	  name = 'yamtl.examples.mapping.incr.cd2db'
-	  buildCommand 'org.eclipse.jdt.core.javabuilder'
-	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
-	  buildCommand 'org.eclipse.wst.common.project.facet.core.builder'
-
-	  natures 'org.eclipse.jdt.core.javanature',
-		  'org.eclipse.buildship.core.gradleprojectnature',
-		  'org.eclipse.wst.common.project.facet.core.nature',
-		  'org.eclipse.xtext.ui.shared.xtextNature',
-		  'org.eclipse.pde.PluginNature'
-	}
-}
-
-repositories {
-	maven {
-		url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo"
-	}
-	mavenLocal()
-	mavenCentral()
-}
-
-
-
+eclipse.project.name = 'cd2db.incr'
+eclipse.project.natures(
+	'org.eclipse.xtext.ui.shared.xtextNature',
+    'org.eclipse.pde.PluginNature')
+	
 // XTEND: configures output directories for generated java
 xtend {
 	sourceSets {
@@ -49,69 +25,14 @@ sourceSets {
 			]
 		}
 	}
-}
-
-
-
-// 	INCREMENTAL SETUP
-mainClassName = "cd2db.Runner_incr_delta1"
-//mainClassName = "cd2db.Runner_incr_delta2"
-//mainClassName = "cd2db.Runner_incr_delta3"
-//mainClassName = "cd2db.Runner_incr_delta4"
-//mainClassName = "cd2db.Runner_incr_delta5"
-//mainClassName = "cd2db.Runner_incr_delta6"
-applicationDefaultJvmArgs = ["-Xmx12288m"]
-
-
-// ASPECTJ
-configurations {
-	ajc
-	aspects
-	aspectCompile
-	ajInpath
-	compile {
-		extendsFrom aspects
-	}
-}
-
-compileJava {
-	sourceCompatibility="17"
-  
-	doLast{
-		ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath )
-		ant.iajc(
-			destDir: sourceSets.main.output.classesDir.absolutePath,
-			inpath: configurations.ajInpath.asPath,
-			maxmem: "512m",
-			fork: "true",
-			aspectPath:configurations.aspects.asPath,
-			sourceRootCopyFilter:"**/.git/*,**/*.java",
-			classpath:"${configurations.compile.asPath};${configurations.aspectCompile.asPath}"){
-			sourceroots{
-				sourceSets.main.java.srcDirs.each{
-					pathelement(location:it.absolutePath)
-				}
-			}
+	test{
+		java {
+			srcDirs = [
+				'src/test/java',
+				'src/test/xtend-gen'
+			]	
 		}
 	}
-  }
+}	
 
-dependencies {
-	implementation 'yamtl:yamtl:0.4.17'
-	implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
-	
-	// AspectJ
-	ajc "org.aspectj:aspectjtools:1.9.20.1"
-	implementation "org.aspectj:aspectjrt:1.9.20.1"
-	implementation "org.aspectj:aspectjweaver:1.9.20.1"
-	aspects "yamtl:yamtl:0.4.17"
-	ajInpath "yamtl:yamtl:0.4.17"
-}
 
-test {
-	useJUnitPlatform()
-}
-
-task junit4Test(type: Test) {
-	useJUnit()
-}

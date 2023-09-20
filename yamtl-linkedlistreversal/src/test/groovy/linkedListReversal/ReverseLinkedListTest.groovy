@@ -20,8 +20,8 @@ class ReverseLinkedListTest extends YAMTLModule {
 	@Test
 	def void testLinkedList() {
 		// model transformation execution example
-		def metamodel = YAMTLModule.loadMetamodel(BASE_PATH + '/LinkedList.ecore') as EPackage
-		def xform = new ReverseLinkedList(metamodel)
+		def res = YAMTLModule.preloadMetamodel(BASE_PATH + '/LinkedList.ecore') as Resource
+		def xform = new ReverseLinkedList(res.contents[0] as EPackage)
 		xform.loadInputModels(['in': BASE_PATH + '/inputList.xmi'])
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/outputList.xmi'])

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<change:ChangeDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:change="http://www.eclipse.org/emf/2003/Change" xmlns:fmaClass="org.fma.fmaClass">
-  <objectsToAttach xsi:type="fmaClass:Class" name="Product"/>
-  <resourceChanges resourceURI="file:/Users/ab373/Documents/ArturData/WORK/git/YAMTL/yamtl.tests/src/main/java/cd2db/sourceModel.xmi">
-    <listChanges index="3" referenceValues="//@objectsToAttach.0"/>
+<change:ChangeDescription
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:change="http://www.eclipse.org/emf/2003/Change"
+    xmlns:fmaClass="org.fma.fmaClass">
+  <objectsToAttach
+      xsi:type="fmaClass:Class"
+      name="Product"/>
+  <resourceChanges
+      resourceURI="file:/../sourceModel.xmi">
+    <listChanges
+        index="3"
+        referenceValues="//@objectsToAttach.0"/>
   </resourceChanges>
 </change:ChangeDescription>

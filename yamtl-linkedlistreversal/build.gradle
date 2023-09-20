@@ -1,48 +1,11 @@
 plugins {
 	id 'groovy'
-	id 'eclipse'
-	id 'idea'
 }
 
-group 'yamtl'
-
-
-eclipse {
-	project {
-	  name = 'yamtl-linkedlistreversal'
-	  buildCommand 'org.eclipse.jdt.core.javabuilder'
-	  buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
-	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
-	  natures 'org.eclipse.jdt.core.javanature',
-	  	'org.codehaus.groovy.eclipse.groovyNature',
-		  'org.eclipse.buildship.core.gradleprojectnature'
-	}
-}
-
-
-repositories {
-	maven{ url 'https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo' }
-	mavenCentral()
-}
-
-
+eclipse.project.name = 'yamtl-linkedlistreversal'
+eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
+eclipse.project.natures 'org.codehaus.groovy.eclipse.groovyNature'
 
 dependencies {
-	implementation 'yamtl:yamtl:0.4.3'
-	implementation 'yamtl:untyped-models:0.0.25'
 	implementation 'org.apache.groovy:groovy-all:4.0.11'
-	implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
-	implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
-	implementation "org.eclipse.emf:org.eclipse.emf.ecore.change:2.14.0"
-	implementation 'org.springframework.boot:spring-boot-starter-aop:3.1.0'
-	implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
 }
-
-
-test {
-	useJUnitPlatform()
-}
-
-
-
-
