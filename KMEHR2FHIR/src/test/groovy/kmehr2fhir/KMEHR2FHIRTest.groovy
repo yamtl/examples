@@ -1,6 +1,7 @@
 package kmehr2fhir
 
 import org.hl7.emf.fhir.FhirPackage;
+import org.hl7.emf.fhir.util.FhirResourceFactoryImpl
 import org.junit.jupiter.api.Test
 
 import be.fgov.ehealth.standards.kmehr.schema.kmehr.KmehrPackage; 
@@ -16,9 +17,10 @@ class KMEHR2FHIRTest extends YAMTLModule {
 		
         def xform = new KMEHR2FHIR(KmehrPackage.eINSTANCE, FhirPackage.eINSTANCE)
 		xform.registerResourceFactory("kmehr", new KmehrResourceFactoryImpl())
+		xform.registerResourceFactory("fhir", new FhirResourceFactoryImpl())
         xform.loadInputModels(['in': BASE_PATH + '/sumehr_example.kmehr'])
-//        xform.execute()
-//        xform.saveOutputModels(['out': BASE_PATH + '/baseOutput.xmi'])
+        xform.execute()
+        xform.saveOutputModels(['out': BASE_PATH + '/output.xmi'])
 		
 	}
 
