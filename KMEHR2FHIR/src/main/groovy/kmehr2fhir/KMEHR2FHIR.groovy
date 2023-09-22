@@ -1,6 +1,7 @@
 package kmehr2fhir
 
 import org.eclipse.emf.ecore.EPackage
+import org.hl7.emf.fhir.Bundle
 import org.hl7.emf.fhir.BundleType
 import org.hl7.emf.fhir.BundleTypeEnum
 
@@ -49,26 +50,29 @@ class KMEHR2FHIR extends YAMTLModule {
 
 					def inputElements = [s.transaction, s.patient]
 
-					inputElements.addAll(s.transaction.collect{tr -> tr.txAuthor()})
-
-					inputElements.addAll(s.transaction.collect{tr -> tr.item.collect{i -> i.hcpartyContent()}.flatten()})
-
+					inputElements.addAll(s.transaction.collect{tr -> tr.author})
+					
+ 
+					inputElements.addAll(s.transaction.collect{tr -> tr.item.collect{i -> i.content.hcparty}.flatten()})
 					def sequence = []
-					inputElements.addAll(s.transaction.collect{tr -> tr.item.select{i -> i.isMedication()}.collect{i -> sequence.addAll(i.posology, i)}}.flatten());
+					inputElements.addAll(s.transaction.collect{tr -> tr.item.findAll{i -> i.content.medicinalproduct}.collect{i -> sequence.addAll(i.posology, i)}}.flatten());
 
 					inputElements.addAll(s.transaction
-						.collect{tr -> tr.item.select{i -> i.isAllergy() || i.isIntolerance()}}.flatten());
+						.collect{tr -> tr.item.cd.findAll{i -> i.value == "allergy" || i.value == "intolerance"}}.flatten());
 					  inputElements.addAll(s.transaction
-						.collect{tr -> tr.item.select{i -> i.isActiveProblem()}}.flatten());
+						.collect{tr -> tr.item.cd.findAll{i -> i.value == "active"}}.flatten());
 					  inputElements.addAll(s.transaction
-						.collect{tr -> tr.item.select{i -> i.isVaccine()}}.flatten());
+						.collect{tr -> tr.item.cd.findAll{i -> i.value == "vaccine"}}.flatten());
 					  inputElements.addAll(s.transaction
-						.collect{tr | tr.item.select{i -> i.isInactiveProblem()}}.flatten());
-
-					t.entry.addAll(inputElements
+						.collect{tr -> tr.item.cd.findAll{i -> i.value == "active"}}.flatten());
+//					inputElements.collect{e -> this.BundleEntry(e)}.flatten();
+//					inputElements.findAll{e -> e !== null}.flatten();
+					
+					t.entry.addAll(inputElements						
 						.flatten()
-						.collect{i -> i.equivalents('CompositionBundleEntry', 'PatientBundleEntry', 'OrganizationBundleEntry', 'PractitionerBundleEntry', 'MedicationBundleEntry', 'PosologyBundleEntry', 'AllergyIntoleranceBundleEntry', 'ConditionBundleEntry', 'ImmunizationBundleEntry')}.flatten()
-						.select{e -> e.isKindOf(fhirPk.BundleEntry)});
+						.collect{i -> fetch(['CompositionBundleEntry', 'PatientBundleEntry', 'OrganizationBundleEntry', 'PractitionerBundleEntry', 'MedicationBundleEntry', 'PosologyBundleEntry', 'AllergyIntoleranceBundleEntry', 'ConditionBundleEntry', 'ImmunizationBundleEntry'])}.flatten()
+						.findAll{e -> e.isKindOf(fhirPk.BundleEntry)}); 
+					
 				})
 			/*
 			rule('SumEHRTransaction')
