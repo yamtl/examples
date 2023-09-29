@@ -30,6 +30,7 @@ repositories {
 
 dependencies {
 	implementation 'org.apache.groovy:groovy-all:4.0.11'
+	implementation "yamtl:yamtl:0.4.21"
 	implementation 'io.github.atlresearch:emfmodelfuzzer:0.1'
 	implementation 'be.fgov.ehealth.emf.kmehr:be.fgov.ehealth.emf.kmehr:1.38.0'
 	implementation 'org.hl7.emf.fhir:org.hl7.emf.fhir:5.0.0'

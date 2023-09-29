@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DIV xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="HTML">
+  <children xsi:type="H1" value="Wake up"/>
+  <children xsi:type="H1" value="Is it really too early?"/>
+  <children xsi:type="H1" value="Sleep"/>
+  <children xsi:type="H1" value="Get up"/>
+  <children xsi:type="H1" value="begin"/>
+  <children xsi:type="H1" value=""/>
+  <children xsi:type="H1" value="Yes"/>
+  <children xsi:type="H1" value="Some Time Passes"/>
+  <children xsi:type="H1" value="No"/>
+  <children xsi:type="H1" value="start"/>
+</DIV>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<TABLE xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="HTML">
+  <trs>
+    <tds xsi:type="TH" value="Node"/>
+    <tds xsi:type="TH" value="Incoming Transition(s)"/>
+    <tds xsi:type="TH" value="Outgoing Transition(s)"/>
+  </trs>
+  <trs>
+    <tds value="Wake up"/>
+    <tds value="[Some Time Passes, start]"/>
+    <tds value="[]"/>
+  </trs>
+  <trs>
+    <tds value="Is it really too early?"/>
+    <tds value="[]"/>
+    <tds value="[Yes, No]"/>
+  </trs>
+  <trs>
+    <tds value="Sleep"/>
+    <tds value="[Yes]"/>
+    <tds value="[Some Time Passes]"/>
+  </trs>
+  <trs>
+    <tds value="Get up"/>
+    <tds value="[No]"/>
+    <tds value="[]"/>
+  </trs>
+  <trs>
+    <tds value="begin"/>
+    <tds value="[]"/>
+    <tds value="[start]"/>
+  </trs>
+</TABLE>
