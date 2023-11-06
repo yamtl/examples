@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'yamtl-examples'
-include 'cd2db', 'cd2db.incr', 'KMEHR2FHIR', 'FlowchartToHTML', 'refactoring', 'yamtl-linkedlistreversal'
+include 'cd2db', 'cd2db.incr', 'FlowchartToHTML', 'refactoring', 'yamtl-linkedlistreversal'

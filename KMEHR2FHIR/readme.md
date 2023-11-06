@@ -1,5 +1,7 @@
 # LinkedList reversal M2M transformation with YAMTLGroovy
 
+**This project is a stub and is NOT completed**.
+
 * Declaration of transformation is available in `src/main/groovy`
 * An example of how to execute it can be found in `src/main/test`
 * The configuration and dependencies needed are in `build.gradle`

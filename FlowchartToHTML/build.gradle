@@ -4,7 +4,6 @@ plugins {
 
 eclipse.project.name = 'FlowchartToHTML'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
-eclipse.project.natures 'org.codehaus.groovy.eclipse.groovyNature'
 
 dependencies {
 	implementation 'org.apache.groovy:groovy-all:4.0.11'
