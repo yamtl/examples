@@ -2,13 +2,9 @@ plugins {
 	id 'groovy'
 }
 
-eclipse.project.name = 'refactoring'
+eclipse.project.name = 'cd2db-groovy'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
 
 dependencies {
 	implementation 'org.apache.groovy:groovy-all:4.0.11'
 }
-
-
-
-
