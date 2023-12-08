@@ -2,9 +2,17 @@ plugins {
 	id 'groovy'
 }
 
-eclipse.project.name = 'cd2db-groovy'
+eclipse.project.name = 'issue-tracking'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
 
 dependencies {
 	implementation 'org.apache.groovy:groovy-all:4.0.15'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java', 'src/main/emf-gen']
+		}
+	}
 }

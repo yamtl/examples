@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/issue-tracking/src/main/emf-gen" modelPluginID="issue-tracking"
+    modelName="IssuesMetamodel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>issuesMetamodel.ecore</foreignModel>
+  <genPackages prefix="IssueTracking" disposableProviderFactory="true" ecorePackage="issuesMetamodel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="issuesMetamodel.ecore#//Status">
+      <genEnumLiterals ecoreEnumLiteral="issuesMetamodel.ecore#//Status/OPEN"/>
+      <genEnumLiterals ecoreEnumLiteral="issuesMetamodel.ecore#//Status/CLOSED"/>
+      <genEnumLiterals ecoreEnumLiteral="issuesMetamodel.ecore#//Status/IN_PROGRESS"/>
+    </genEnums>
+    <genClasses ecoreClass="issuesMetamodel.ecore#//IssueTracker">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//IssueTracker/users"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//IssueTracker/issues"/>
+    </genClasses>
+    <genClasses ecoreClass="issuesMetamodel.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//User/userID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//User/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//User/email"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//User/reportedIssues"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//User/assignedIssues"/>
+    </genClasses>
+    <genClasses ecoreClass="issuesMetamodel.ecore#//Issue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Issue/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Issue/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Issue/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Issue/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Issue/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//Issue/reportedBy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//Issue/assignedTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//Issue/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="issuesMetamodel.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Comment/CommentID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Comment/Text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute issuesMetamodel.ecore#//Comment/Timestamp"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference issuesMetamodel.ecore#//Comment/issue"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

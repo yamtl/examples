@@ -1,0 +1,44 @@
+@namespace(uri="yamtl.issue", prefix="i")
+package issueTracking;
+
+
+class IssueTracker {
+	val User[*] users;
+	val Issue[*] issues;	
+}
+
+class User {
+    attr String userID;
+    attr String name;
+    attr String email;
+
+    ref Issue[*]#reportedBy reportedIssues;
+    ref Issue[*]#assignedTo assignedIssues;
+}
+
+class Issue {
+    attr String ID;
+    attr String title;
+    attr String description;
+    attr String priority;
+    attr Status status;
+
+    ref User[1]#reportedIssues reportedBy;
+    ref User[*]#assignedIssues assignedTo;
+
+    val Comment[*]#issue comments;
+}
+
+class Comment {
+    attr String CommentID;
+    attr String Text;
+    attr Date Timestamp;
+
+    ref Issue[1]#comments issue;
+}
+
+enum Status {
+    OPEN = 0;
+    CLOSED = 1;
+    IN_PROGRESS = 2;
+}
