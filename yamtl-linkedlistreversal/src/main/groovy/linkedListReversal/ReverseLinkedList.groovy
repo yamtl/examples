@@ -8,7 +8,7 @@ import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
 class ReverseLinkedList extends YAMTLModule {
-	public ReverseLinkedList(EPackage llPk) {
+	public ReverseLinkedList(EPackage inPk, EPackage outPk) {
 		/*
 		 *  adds EMF extensions to interpret 
 		 *  - getters/setters of an EObject: t.name instead of t.getName()
@@ -19,24 +19,24 @@ class ReverseLinkedList extends YAMTLModule {
 		/*
 		 * declares in, out, inOut parameters for a model transformation		
 		 */
-		header().in('in', llPk).out('out', llPk)
+		header().in('in', inPk).out('out', outPk)
 		
 		/*
 		 * rule declaration
 		 */
 		ruleStore([
 			rule('LinkedList2LinkedList')
-				.in('s', llPk.LinkedList)
-				.out('t', llPk.LinkedList, {
+				.in('s', inPk.LinkedList)
+				.out('t', outPk.LinkedList, {
 					t.nodes = fetch(s.nodes)
-					t.head = fetch(allInstances(llPk.Node).find{it.next==null})
+					t.head = fetch(allInstances(inPk.Node).find{it.next==null})
 				}),
 			
 			rule('Node2Node')
-				.in('s', llPk.Node)
-				.out('t', llPk.Node, {
+				.in('s', inPk.Node)
+				.out('t', outPk.Node, {
 					t.name = s.name
-					t.next = fetch(allInstances(llPk.Node).find{it.next==s})
+					t.next = fetch(allInstances(inPk.Node).find{it.next==s})
 				})
 		])
 	}
