@@ -2,14 +2,21 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fmaRelational="org.fma.Relational">
   <fmaRelational:Table name="Item">
     <col name="date"/>
+    <col name="customerId"/>
   </fmaRelational:Table>
+  <fmaRelational:Column name="objectId"/>
   <fmaRelational:Table name="Order"/>
+  <fmaRelational:Column name="objectId"/>
   <fmaRelational:Table name="Customer">
     <col name="name"/>
   </fmaRelational:Table>
+  <fmaRelational:Column name="objectId"/>
   <fmaRelational:Type name="String"/>
   <fmaRelational:Type name="Integer"/>
   <fmaRelational:Table name="Item_product"/>
   <fmaRelational:Column name="ItemId"/>
   <fmaRelational:Column/>
+  <fmaRelational:Table name="Order_items"/>
+  <fmaRelational:Column name="OrderId"/>
+  <fmaRelational:Column name="itemsId"/>
 </xmi:XMI>

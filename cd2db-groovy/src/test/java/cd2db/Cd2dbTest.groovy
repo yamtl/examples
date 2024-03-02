@@ -16,7 +16,7 @@ class Cd2dbTest {
 
 		def cdRes = YAMTLModule.preloadMetamodel('src/main/resources/metamodels/CD.emf')
 		def relRes = YAMTLModule.preloadMetamodel('src/main/resources/metamodels/Relational.emf')
-        def xform = new CD2DB(cdRes.contents[0] as EPackage, relRes.contents[0] as EPackage)
+        def xform = new CD2DB_simple(cdRes.contents[0] as EPackage, relRes.contents[0] as EPackage)
 		YAMTLGroovyExtensions.init(xform)
 		
 		

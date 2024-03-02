@@ -41,6 +41,7 @@ subprojects{
 
     dependencies {
         implementation "yamtl:yamtl:$yamtlVersion"
+        implementation "yamtl:yamtl.groovy:$yamtlVersion"
         implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
         implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
         implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
