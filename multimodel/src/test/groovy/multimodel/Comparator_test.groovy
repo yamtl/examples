@@ -15,19 +15,19 @@ public class Comparator_test extends YAMTLModule {
 		def resSM = Comparator.preloadMetamodel("model-test/multimodel/CD.ecore")
 		def pk = resSM.contents.get(0) as EPackage
 		
-		def embedding = new Comparator(pk)
-		YAMTLGroovyExtensions.init( embedding )
+		def matcher = new Comparator(pk)
+		YAMTLGroovyExtensions.init( matcher )
 		
-		embedding.loadInputModels(['model1': 'model-test/multimodel/cd_model1.xmi', 'model2': 'model-test/multimodel/cd_model2.xmi'])
+		matcher.loadInputModels(['model1': 'model-test/multimodel/cd_model1.xmi', 'model2': 'model-test/multimodel/cd_model2.xmi'])
 		
-		embedding.execute()
+		matcher.execute()
 		
-		embedding.saveOutputModels(['out': 'model-test/multimodel/cd_output.xmi'])
+		matcher.saveOutputModels(['out': 'model-test/multimodel/cd_output.xmi'])
 		
-		def actualModel = embedding.getOutputModel('out')
+		def actualModel = matcher.getOutputModel('out')
 		
 		EMFComparator comparator = new EMFComparator();
-		def expectedRes = embedding.loadModel('model-test/multimodel/cd_expected.xmi', false)
+		def expectedRes = matcher.loadModel('model-test/multimodel/cd_expected.xmi', false)
 		def assertionResult =  comparator.equals(expectedRes.getContents(), actualModel.getContents())
 		assertTrue(assertionResult);
 	}
