@@ -11,7 +11,7 @@ import yamtl.utils.EMFComparator
 
 class Cd2dbTest {
     @Test
-    void testCD2DB() {
+    void test_CD2DB_simple() {
         String inputModelPath = 'src/main/java/cd2db/sourceModel.xmi'
 
 		def cdRes = YAMTLModule.preloadMetamodel('src/main/resources/metamodels/CD.emf')

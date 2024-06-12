@@ -8,4 +8,14 @@
  */
 
 rootProject.name = 'yamtl-examples'
-include 'cd2db-java', 'cd2db-groovy', 'cd2db', 'cd2db.incr', 'FlowchartToHTML', 'refactoring', 'yamtl-linkedlistreversal', 'issue-tracking'
+include (
+  	':cd2db-java',
+	':cd2db-groovy',
+	':cd2db',
+	':cd2db.incr',
+	':FlowchartToHTML',
+	':FlowchartToHTML_exercises',
+	':refactoring',
+	':yamtl-linkedlistreversal',
+	':multimodel'
+)

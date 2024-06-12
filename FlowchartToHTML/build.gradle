@@ -2,7 +2,7 @@ plugins {
 	id 'groovy'
 }
 
-eclipse.project.name = 'FlowchartToHTML'
+eclipse.project.name = 'yamtl.examples.FlowchartToHTML'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
 
 

@@ -4,7 +4,7 @@ plugins {
 	id "com.github.rzabini.gradle-jython" version "1.1.0"
 }
 
-eclipse.project.name = 'cd2db-python'
+eclipse.project.name = 'yamtl.examples.cd2db.python'
 
 sourceCompatibility = 17
 

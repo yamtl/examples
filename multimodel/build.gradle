@@ -1,0 +1,16 @@
+plugins {
+	id 'groovy'
+}
+
+eclipse.project.name = 'yamtl.examples.multimodel.groovy'
+eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.apache.groovy:groovy-all:4.0.15'
+	implementation "yamtl:yamtl.groovy:$yamtlVersion"
+}

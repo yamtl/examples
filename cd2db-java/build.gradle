@@ -1,9 +1,6 @@
-eclipse.project.name = 'cd2db-java'
+eclipse.project.name = 'yamtl.examples.cd2db.java'
 
 repositories {
-	maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo" }
-
-	mavenCentral()
 	maven {
 		url "https://maven.pkg.github.com/ATL-Research/*"
 		credentials {

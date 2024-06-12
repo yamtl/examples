@@ -2,7 +2,7 @@ plugins {
 	id "org.xtext.xtend" version "3.0.2"
 }
 
-eclipse.project.name = 'cd2db'
+eclipse.project.name = 'yamtl.examples.cd2db.xtend'
 eclipse.project.natures(
 	'org.eclipse.xtext.ui.shared.xtextNature',
     'org.eclipse.pde.PluginNature')

@@ -2,7 +2,7 @@ plugins {
 	id 'groovy'
 }
 
-eclipse.project.name = 'yamtl-linkedlistreversal'
+eclipse.project.name = 'yamtl.examples.linkedlistreversal'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
 eclipse.project.natures 'org.codehaus.groovy.eclipse.groovyNature'
 

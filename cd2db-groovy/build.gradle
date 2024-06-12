@@ -2,12 +2,10 @@ plugins {
 	id 'groovy'
 }
 
-eclipse.project.name = 'cd2db-groovy'
+eclipse.project.name = 'yamtl.examples.cd2db.groovy'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
 
 repositories {
-	maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo" }
-
 	mavenCentral()
 	maven {
 		url "https://maven.pkg.github.com/ATL-Research/*"

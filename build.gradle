@@ -1,16 +1,7 @@
-allprojects {
-	
+allprojects {	
 	repositories {
-//        maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo" }
-		mavenLocal()
+        maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo" }
 		mavenCentral()
-		maven {
-			url "https://maven.pkg.github.com/ATL-Research/*"
-			credentials {
-				username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-				password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
-			}
-		}
 	}
 
 }
@@ -24,7 +15,7 @@ subprojects{
     sourceCompatibility = 17
 
 	ext {
-		yamtlVersion = "0.4.32"
+		yamtlVersion = "1.0.1"
 	}
 	
     eclipse {
@@ -41,7 +32,7 @@ subprojects{
 
     dependencies {
         implementation "yamtl:yamtl:$yamtlVersion"
-        implementation "yamtl:yamtl.groovy:$yamtlVersion"
+        implementation "yamtl:yamtl.flexible-models:$yamtlVersion"
         implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
         implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
         implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"

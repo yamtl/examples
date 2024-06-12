@@ -17,7 +17,6 @@ public class PullUpTest {
 		YAMTLGroovyExtensions.init(xform)
 		xform.setInplace(true)
 		xform.withStagedExecution = false
-		xform.enableUpdateExtent = false
 		
 		xform.loadInputModels(["emf":BASE_PATH+"/StateMachine.ecore"])
 		xform.execute()

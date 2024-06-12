@@ -2,7 +2,7 @@ plugins {
 	id 'groovy'
 }
 
-eclipse.project.name = 'refactoring'
+eclipse.project.name = 'yamtl.examples.refactoring'
 eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
 
 dependencies {
