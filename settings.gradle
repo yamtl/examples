@@ -17,5 +17,6 @@ include (
 	':FlowchartToHTML_exercises',
 	':refactoring',
 	':yamtl-linkedlistreversal',
-	':multimodel'
+	':multimodel',
+	':flexibleModels'
 )

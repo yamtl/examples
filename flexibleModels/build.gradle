@@ -1,0 +1,38 @@
+plugins {
+	id 'groovy'
+}
+
+eclipse.project.name = 'yamtl.examples.flexibleModels.groovy'
+eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.apache.groovy:groovy-all:4.0.15'
+	implementation "yamtl:yamtl.groovy:$yamtlVersion"
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java', 'src/main/emf-gen']
+		}
+		groovy {
+			srcDirs = ['src/main/groovy']
+		}
+	}
+	test {
+		groovy {
+			srcDirs = ['src/test/groovy']
+		}
+	}
+}
+
+//compileGroovy {
+//	dependsOn compileJava
+//	source sourceSets.main.groovy.srcDirs
+//	classpath = sourceSets.main.runtimeClasspath
+//}

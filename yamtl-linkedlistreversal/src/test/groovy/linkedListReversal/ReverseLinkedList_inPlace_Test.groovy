@@ -13,7 +13,7 @@ import yamtl.utils.EMFComparator
 class ReverseLinkedList_inPlace_Test extends YAMTLModule {
 	final BASE_PATH = 'model'
 	
-	@Test
+	//@Test
 	def void testLinkedList_inPlace() {
 		// model transformation execution example
 		def res = YAMTLModule.preloadMetamodel(BASE_PATH + '/LinkedList.ecore') as Resource

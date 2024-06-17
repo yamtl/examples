@@ -1,0 +1,11 @@
+patient_id,date,time,duration_minutes,distance_km,intensity,air_quality,air_condition,air_temperature_C,heart_rate_bpm
+0,18/02/2021,19:43,10,2.6,Moderate,Poor,Cloudy,23,146
+0,18/12/2022,11:29,52,14.0,Low,Moderate,Cloudy,10,156
+0,13/04/2021,07:37,85,2.7,High,Moderate,Rainy,20,139
+0,12/03/2022,16:06,57,1.5,Moderate,Moderate,Sunny,19,143
+0,05/09/2020,09:49,81,13.8,Low,Moderate,Sunny,1,112
+0,02/10/2020,15:23,80,14.2,Low,Moderate,Rainy,13,137
+0,05/12/2022,22:02,42,10.0,Moderate,Moderate,Rainy,19,118
+0,22/07/2021,22:20,10,7.7,Moderate,Moderate,Rainy,7,123
+0,08/06/2021,10:31,86,5.7,High,Good,Rainy,30,79
+0,27/07/2022,18:00,23,10.0,High,Good,Rainy,27,164

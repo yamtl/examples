@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="HealthTracker" nsURI="yamtl.healthTracker" nsPrefix="ht">
+  <eClassifiers xsi:type="ecore:EClass" name="Patient">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patientID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" upperBound="-1"
+        eType="#//PhysicalActivity" containment="true" eOpposite="#//PhysicalActivity/patient"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalActivity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intensity" eType="#//Intensity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="airQuality" eType="#//AirQuality"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="airCondition" eType="#//AirCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patient" lowerBound="1"
+        eType="#//Patient" eOpposite="#//Patient/activities"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Intensity">
+    <eLiterals name="High"/>
+    <eLiterals name="Moderate" value="1"/>
+    <eLiterals name="Low" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AirQuality">
+    <eLiterals name="Good"/>
+    <eLiterals name="Moderate" value="1"/>
+    <eLiterals name="Poor" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AirCondition">
+    <eLiterals name="Sunny"/>
+    <eLiterals name="Cloudy" value="1"/>
+    <eLiterals name="Rainy" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>
