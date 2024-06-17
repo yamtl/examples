@@ -39,18 +39,15 @@ public class CSV_to_PA_untyped_helper extends YAMTLModule {
                     a.airCondition = AirCondition.get(r.air_condition)
                     a.airQuality = AirQuality.get(r.air_quality)
                 }
-			
-	        ])
+        ])
 		
 		helperStore([
-				staticOperation('getPatient') { 
-					argMap ->
-					def patient_id = argMap['patient_id'] as Integer
-					def p = PAFactory.createPatient()
-					p.patientID = patient_id
-					p
-				}
-			])
+			staticOperation('getPatient') { 
+				def p = PAFactory.createPatient()
+				p.patientID = Integer.valueOf(patient_id)
+				p
+			}
+		])
         
     }
     
