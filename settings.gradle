@@ -18,5 +18,7 @@ include (
 	':refactoring',
 	':yamtl-linkedlistreversal',
 	':multimodel',
-	':flexibleModels'
+	':flexibleModels',
+	':query_dsl',
+	':education_platform'
 )

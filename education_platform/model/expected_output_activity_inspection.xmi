@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<a:ActivityConfig xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:a="https://mde-network.com/activitySpec">
+  <activities id="yamtl-activity-inspection" title="Activity Inspection" icon="yamtl">
+    <panels id="sflexible-panel" name="Flexible model" refId="yaml"/>
+    <panels xsi:type="a:CompositePanel" id="smodel-panel-composite" name="Source Model" refId="composite-panel">
+      <buttons xsi:type="a:ButtonRef" id="show-editor-button-1" icon="editor" hint="Toggle editor" internalFunction="toggle" targetPanel="panel-smodel"/>
+      <buttons xsi:type="a:ButtonRef" id="show-diagram-button-1" icon="diagram" hint="Toggle diagram" internalFunction="toggle" targetPanel="panel-smodel-diagram"/>
+      <childPanels id="panel-smodel" name="XMI" refId="xmi"/>
+      <childPanels id="panel-smodel-diagram" name="Diagram" refId="plantuml"/>
+    </panels>
+    <panels id="panel-yamtl" name="Transformation (YAMTL)" refId="yamtl-from-flexible"/>
+    <panels id="panel-console" name="Console" refId="console"/>
+    <panels xsi:type="a:CompositePanel" id="tmm-panel-composite" name="Target Metamodel" refId="composite-panel">
+      <buttons xsi:type="a:ButtonRef" id="show-editor-button-2" icon="editor" hint="Toggle editor" internalFunction="toggle" targetPanel="panel-tmm"/>
+      <buttons xsi:type="a:ButtonRef" id="show-diagram-button-2" icon="diagram" hint="Toggle diagram" internalFunction="toggle" targetPanel="panel-tmm-diagram"/>
+      <childPanels id="panel-tmm" name="EMFatic" refId="emfatic"/>
+      <childPanels id="panel-tmm-diagram" name="Diagram" refId="plantuml"/>
+    </panels>
+    <panels id="panel-yamtl-query" name="QueryDsl (YAMTL)" refId="yamtl-query"/>
+    <layout columns="sflexible-panel smodel-panel-composite panel-yamtl"/>
+    <layout columns="panel-console tmm-panel-composite panel-yamtl-query"/>
+    <actions sourcePanel="panel-yamtl" output="panel-smodel" outputConsole="panel-console" outputType="code">
+      <arguments key="trafoGroovy" value="panel-yamtl"/>
+      <arguments key="inModel" value="sflexible-panel"/>
+      <arguments key="outMetamodel" value="panel-tmm"/>
+    </actions>
+    <actions sourcePanel="panel-yamtl-query" output="panel-console" outputConsole="panel-console" outputType="text">
+      <arguments key="query" value="panel-yamtl-query"/>
+      <arguments key="model" value="panel-smodel"/>
+      <arguments key="metamodel" value="panel-tmm"/>
+    </actions>
+    <actions sourcePanel="panel-tmm" output="panel-tmm-diagram" outputType="puml">
+      <arguments key="metamodel" value="panel-tmm"/>
+    </actions>
+    <actions sourcePanel="panel-smodel" output="panel-smodel-diagram" outputType="puml">
+      <arguments key="metamodel" value="panel-tmm"/>
+      <arguments key="model" value="panel-smodel"/>
+    </actions>
+    <tools>https://yamtl.github.io/playground-interfaces/static.emf/emf-tool.yml</tools>
+    <tools>https://yamtl.github.io/playground-interfaces/static.yamtlgroovy/yamtl-m2m.yml</tools>
+  </activities>
+</a:ActivityConfig>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:a="https://mde-network.com/activitySpec" xmlns:t="https://mde-network.com/toolSpec">
+  <a:ActivityConfig>
+    <activities id="yamtl-activity-inspection" title="Activity Inspection" icon="yamtl">
+      <panels id="sflexible-panel" name="Flexible model" refId="yaml"/>
+      <panels xsi:type="a:CompositePanel" id="smodel-panel-composite" name="Source Model" refId="composite-panel">
+        <buttons xsi:type="a:ButtonRef" id="show-editor-button-1" icon="editor" hint="Toggle editor" internalFunction="toggle" targetPanel="panel-smodel"/>
+        <buttons xsi:type="a:ButtonRef" id="show-diagram-button-1" icon="diagram" hint="Toggle diagram" internalFunction="toggle" targetPanel="panel-smodel-diagram"/>
+        <childPanels id="panel-smodel" name="XMI" refId="xmi"/>
+        <childPanels id="panel-smodel-diagram" name="Diagram" refId="plantuml"/>
+      </panels>
+      <panels id="panel-yamtl" name="Transformation (YAMTL)" refId="yamtl-from-flexible"/>
+      <panels id="panel-console" name="Console" refId="console"/>
+      <panels xsi:type="a:CompositePanel" id="tmm-panel-composite" name="Target Metamodel" refId="composite-panel">
+        <buttons xsi:type="a:ButtonRef" id="show-editor-button-2" icon="editor" hint="Toggle editor" internalFunction="toggle" targetPanel="panel-tmm"/>
+        <buttons xsi:type="a:ButtonRef" id="show-diagram-button-2" icon="diagram" hint="Toggle diagram" internalFunction="toggle" targetPanel="panel-tmm-diagram"/>
+        <childPanels id="panel-tmm" name="EMFatic" refId="emfatic"/>
+        <childPanels id="panel-tmm-diagram" name="Diagram" refId="plantuml"/>
+      </panels>
+      <panels id="panel-yamtl-query" name="QueryDsl (YAMTL)" refId="yamtl-query"/>
+      <layout columns="sflexible-panel smodel-panel-composite panel-yamtl"/>
+      <layout columns="panel-console tmm-panel-composite panel-yamtl-query"/>
+      <actions sourcePanel="panel-yamtl" sourceButton="run-trafo-flexible-button" output="panel-smodel" outputConsole="panel-console" outputType="code">
+        <arguments key="trafoGroovy" value="panel-yamtl"/>
+        <arguments key="inModel" value="sflexible-panel"/>
+        <arguments key="outMetamodel" value="panel-tmm"/>
+      </actions>
+      <actions sourcePanel="panel-yamtl-query" sourceButton="run-query-button" output="panel-console" outputConsole="panel-console" outputType="text">
+        <arguments key="query" value="panel-yamtl-query"/>
+        <arguments key="model" value="panel-smodel"/>
+        <arguments key="metamodel" value="panel-tmm"/>
+      </actions>
+      <actions sourcePanel="panel-tmm" sourceButton="model-panel-emfatic2cd-button" output="panel-tmm-diagram" outputType="puml">
+        <arguments key="metamodel" value="panel-tmm"/>
+      </actions>
+      <actions sourcePanel="panel-smodel" sourceButton="xmi2od-button" output="panel-smodel-diagram" outputType="puml">
+        <arguments key="metamodel" value="panel-tmm"/>
+        <arguments key="model" value="panel-smodel"/>
+      </actions>
+      <tools>https://yamtl.github.io/playground-interfaces/static.emf/emf-tool.yml</tools>
+      <tools>https://yamtl.github.io/playground-interfaces/static.yamtlgroovy/yamtl-m2m.yml</tools>
+    </activities>
+  </a:ActivityConfig>
+  <t:ToolConfig>
+    <tools id="emf" name="EMF" version="0.0.3" homepage="https://yamtl.github.io/">
+      <functions id="function-ecore2cd" name="Conversion: Ecore to class diagram" returnType="puml" path="https://d2wa34vqh86v1b.cloudfront.net/Prod/ecore2cd_puml">
+        <parameters name="language" type="emfatic"/>
+        <parameters name="metamodel" type="emfatic"/>
+      </functions>
+      <functions id="function-xmi2od" name="Conversion: Xmi model to augmented object diagram" returnType="puml" path="https://d2wa34vqh86v1b.cloudfront.net/Prod/xmi2od_puml">
+        <parameters name="language" type="xmi"/>
+        <parameters name="metamodel" type="emfatic"/>
+        <parameters name="model" type="xmi" instanceOf="/1/@tools.0/@functions.1/@parameters.1"/>
+      </functions>
+      <functions id="function-emf2json" name="Conversion: EMF model to JSON" returnType="json" path="https://d2wa34vqh86v1b.cloudfront.net/Prod/emf2json">
+        <parameters name="language" type="emfatic"/>
+        <parameters name="metamodel" type="emfatic"/>
+      </functions>
+      <panelDefs id="composite-panel" name="CompositePanel" panelClass="CompositePanel" icon="diagram"/>
+      <panelDefs id="model-panel" name="EMFatic" panelClass="ProgramPanel" icon="emfatic" language="emfatic">
+        <buttons xsi:type="t:ActionButton" id="model-panel-emfatic2cd-button" icon="diagram-generate" hint="Render the metamodel class diagram" actionFunction="function-ecore2cd"/>
+        <buttons xsi:type="t:HelpButton" id="model-panel-help-button" icon="info" hint="EMFatic Language Reference" url="https://www.eclipse.org/emfatic/"/>
+      </panelDefs>
+      <panelDefs id="model-json-panel" name="EMFatic" panelClass="ProgramPanel" icon="emfatic" language="emfatic">
+        <buttons xsi:type="t:ActionButton" id="emf2json-button" icon="icons8-json-16" hint="Export to JSON" actionFunction="function-emf2json"/>
+        <buttons xsi:type="t:ActionButton" id="model-json-panel-emfatic2cd-button" icon="diagram-generate" hint="Render the metamodel class diagram" actionFunction="function-ecore2cd"/>
+        <buttons xsi:type="t:HelpButton" id="model-json-panel-help-button" icon="info" hint="EMFatic Language Reference" url="https://www.eclipse.org/emfatic/"/>
+      </panelDefs>
+      <panelDefs id="emfatic" name="EMFatic" panelClass="ProgramPanel" icon="emfatic" language="emfatic">
+        <buttons xsi:type="t:ActionButton" id="emfatic-emfatic2cd-button" icon="diagram-generate" hint="Render the metamodel class diagram" actionFunction="function-ecore2cd"/>
+        <buttons xsi:type="t:HelpButton" id="emfatic-help-button" icon="info" hint="EMFatic Language Reference" url="https://www.eclipse.org/emfatic/"/>
+      </panelDefs>
+      <panelDefs id="ecore" name="Ecore" panelClass="ProgramPanel" icon="ecore" language="ecore">
+        <buttons xsi:type="t:ActionButton" id="ecore2cd-button" icon="diagram-generate" hint="Render the metamodel class diagram" actionFunction="function-ecore2cd"/>
+        <buttons xsi:type="t:HelpButton" id="ecore-help-button" icon="info" hint="EMF Homepage" url="https://www.eclipse.org/modeling/emf/"/>
+      </panelDefs>
+      <panelDefs id="xmi" name="XMI" panelClass="ProgramPanel" icon="xmi-favicon" language="xmi">
+        <buttons xsi:type="t:ActionButton" id="xmi2od-button" icon="diagram-generate" hint="Render the model object diagram" actionFunction="function-xmi2od"/>
+        <buttons xsi:type="t:HelpButton" id="xmi-help-button" icon="info" hint="OMG - XML Metadata Interchange" url="https://www.omg.org/spec/XMI/"/>
+      </panelDefs>
+      <panelDefs id="json" name="JSON" panelClass="ProgramPanel" icon="icons8-json-16" language="json">
+        <buttons xsi:type="t:HelpButton" id="json-help-button" icon="info" hint="ECMA-404 The JSON Data Interchange Standard." url="https://www.json.org/json-en.html"/>
+      </panelDefs>
+      <panelDefs id="plantuml" name="PlantUML" panelClass="OutputPanel" icon="plantuml-favicon" language="puml"/>
+    </tools>
+    <tools id="yamtl" name="YAMTL" version="0.0.1" homepage="https://yamtl.github.io/">
+      <functions id="function-yamtl-m2m" name="YAMTL M2M function" returnType="text" path="https://d2wa34vqh86v1b.cloudfront.net/Prod/yamtl_m2m">
+        <parameters name="trafoGroovy" type="groovy"/>
+        <parameters name="inMetamodel" type="emfatic"/>
+        <parameters name="inModel" type="xmi"/>
+        <parameters name="outMetamodel" type="emfatic"/>
+        <parameters name="language" type="string"/>
+      </functions>
+      <functions id="function-yamtl-m2m-from-flexible" name="YAMTL M2M function (from flexible models)" returnType="text" path="https://d2wa34vqh86v1b.cloudfront.net/Prod/yamtl_m2m_from_flexible">
+        <parameters name="trafoGroovy" type="groovy"/>
+        <parameters name="inModel" type="yaml"/>
+        <parameters name="outMetamodel" type="emfatic"/>
+        <parameters name="language" type="string"/>
+      </functions>
+      <functions id="function-yamtl-query" name="YAMTL Query function" returnType="text" path="https://d2wa34vqh86v1b.cloudfront.net/Prod/yamtl_queryDsl">
+        <parameters name="metamodel" type="emfatic"/>
+        <parameters name="model" type="xmi"/>
+        <parameters name="query" type="groovy"/>
+        <parameters name="language" type="string"/>
+      </functions>
+      <panelDefs id="yaml" name="YAML" panelClass="ProgramPanel" icon="icons8-json-16" language="yaml"/>
+      <panelDefs id="yamtl" name="YAMTL M2M" panelClass="ProgramPanel" icon="yamtl" language="groovy">
+        <buttons xsi:type="t:ActionButton" id="run-trafo-button" icon="run" hint="Run the program (Ctrl/Cmd+S)" actionFunction="function-yamtl-m2m"/>
+      </panelDefs>
+      <panelDefs id="yamtl-from-flexible" name="YAMTL Flexible to Model" panelClass="ProgramPanel" icon="yamtl" language="groovy">
+        <buttons xsi:type="t:ActionButton" id="run-trafo-flexible-button" icon="run" hint="Run the program (Ctrl/Cmd+S)" actionFunction="function-yamtl-m2m-from-flexible"/>
+      </panelDefs>
+      <panelDefs id="yamtl-query" name="YAMTL Query Dsl" panelClass="ProgramPanel" icon="yamtl" language="groovy">
+        <buttons xsi:type="t:ActionButton" id="run-query-button" icon="run" hint="Run the program (Ctrl/Cmd+S)" actionFunction="function-yamtl-query"/>
+      </panelDefs>
+    </tools>
+  </t:ToolConfig>
+</xmi:XMI>
