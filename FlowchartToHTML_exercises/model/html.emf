@@ -1,4 +1,4 @@
-@namespace(uri="HTML", prefix="")
+@namespace(uri="HTML", prefix="html")
 package HTML;
 
 class HTML {

@@ -1,4 +1,4 @@
-@namespace(uri="flowchart", prefix="")
+@namespace(uri="flowchart", prefix="f")
 package flowchart;
 
 abstract class NamedElement {
