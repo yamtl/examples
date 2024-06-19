@@ -1,6 +1,8 @@
-package flowchartToHtmlExamples
+package solutions
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test
+
+import solutions.Example6
 import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions
 import yamtl.utils.EMFComparator

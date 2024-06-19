@@ -1,4 +1,4 @@
-package flowchartToHtmlExamples
+package solutions
 
 import static yamtl.dsl.Helper.*
 import static yamtl.dsl.Rule.*

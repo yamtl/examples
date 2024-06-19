@@ -1,4 +1,4 @@
-package flowchartToHtmlExamples
+package solutions
 import static yamtl.dsl.Rule.*
 import org.eclipse.emf.ecore.EPackage
 import yamtl.core.YAMTLModule
