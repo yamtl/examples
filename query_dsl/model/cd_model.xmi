@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cd:Package
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cd="http://yamtl.github.io/cd"
+    name="cd">
+  <classifiers
+      xsi:type="cd:Class"
+      name="Item">
+    <attr name="product"
+        type="//@classifiers.3"/>
+    <attr name="date"
+        type="//@classifiers.3"/>
+    <attr name="customer"/>
+  </classifiers>
+  <classifiers
+      xsi:type="cd:Class"
+      name="Order">
+    <attr name="items"
+        multiValued="true"
+        type="//@classifiers.0"/>
+  </classifiers>
+  <classifiers
+      xsi:type="cd:Class"
+      name="Customer">
+    <attr name="name"
+        type="//@classifiers.3"/>
+  </classifiers>
+  <classifiers
+      xsi:type="cd:DataType"
+      name="String"/>
+  <classifiers
+      xsi:type="cd:DataType"
+      name="Integer"/>
+</cd:Package>
