@@ -1,3 +1,4 @@
+@namespace(uri="flowchart", prefix="")
 package flowchart;
 
 abstract class NamedElement {
@@ -5,28 +6,26 @@ abstract class NamedElement {
 }
 
 class Flowchart extends NamedElement {
-   val Node[*] nodes;
-   val Transition[*] transitions;
+	val Node[*] nodes;
+	val Transition[*] transitions;
 }
 
 abstract class Node extends NamedElement {
-   ref Transition[*]#source outgoing;
-   ref Transition[*]#target incoming;
+	ref Transition[*]#source outgoing;
+	ref Transition[*]#target incoming;
 }
 
 class Transition extends NamedElement {
-   ref Node#outgoing source;
-   ref Node#incoming target;
+	ref Node#outgoing source;
+	ref Node#incoming target;
 }
 
 class Action extends Node {
-   
 }
 
 class Decision extends Node {
-   
 }
 
 class Subflow extends Flowchart, Node {
-   
 }
+
