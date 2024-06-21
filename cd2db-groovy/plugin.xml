@@ -22,7 +22,7 @@
       <package
             uri="org.fma.Relational"
             class="Relational.RelationalPackage"
-            genModel="src/main/resources/metamodels/Relational.genmodel"/>
+            genModel="src/main/resources/metamodels/fma/Relational.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -30,7 +30,7 @@
       <package
             uri="org.fma.fmaClass"
             class="CD.CDPackage"
-            genModel="src/main/resources/metamodels/CD.genmodel"/>
+            genModel="src/main/resources/metamodels/fma/CD.genmodel"/>
    </extension>
 
 </plugin>

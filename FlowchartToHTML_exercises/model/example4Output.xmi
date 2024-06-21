@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<TABLE xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="HTML">
+<html:TABLE xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:html="HTML">
   <trs>
-    <tds xsi:type="TH" value="Node"/>
-    <tds xsi:type="TH" value="Incoming Transition(s)"/>
-    <tds xsi:type="TH" value="Outgoing Transition(s)"/>
+    <tds xsi:type="html:TH" value="Node"/>
+    <tds xsi:type="html:TH" value="Incoming Transition(s)"/>
+    <tds xsi:type="html:TH" value="Outgoing Transition(s)"/>
   </trs>
   <trs>
     <tds value="Wake up"/>
@@ -30,4 +30,4 @@
     <tds value="[]"/>
     <tds value="[start]"/>
   </trs>
-</TABLE>
+</html:TABLE>
