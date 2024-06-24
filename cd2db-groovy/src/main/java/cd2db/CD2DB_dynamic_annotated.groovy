@@ -3,20 +3,17 @@ package cd2db;
 import static yamtl.dsl.Helper.*;
 import static yamtl.dsl.Rule.*;
 
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage;
 
 import atl.research.class_.Class;
 import atl.research.class_.DataType;
-import yamtl.core.YAMTLModule
+import yamtl.core.YAMTLModuleGroovy
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
 // transformation
-public class CD2DB_dynamic_annotated extends YAMTLModule {
+public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
     // transformation
     CD2DB_dynamic_annotated(EPackage CD, EPackage DB) {
-		// setup
-        YAMTLGroovyExtensions_dynamicEMF.init(this)
 
 		// transformation
         header().in('cd', CD).out('db', DB)

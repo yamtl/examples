@@ -18,7 +18,6 @@ public class Embedding_test  {
 		
 		def embedding = new Embedding(pk)
 		embedding.selectedExecutionPhases = ExecutionPhase.MATCH_ONLY
-		YAMTLGroovyExtensions.init( embedding )
 		
 		embedding.loadInputModels(['model1': 'model-test/multimodel/cd_model1.xmi', 'model2': 'model-test/multimodel/cd_model2.xmi'])
 		embedding.execute()

@@ -79,7 +79,6 @@ class Cd2db_ttc23_tests_dynamic_annotated {
 		EcoreUtil.resolveAll(resourceSet)
 	
 		def xform = new CD2DB_dynamic_annotated(CD, DB)
-		YAMTLGroovyExtensions.init(xform)
 		xform.setEnableCorrectnessCheck(false)
 		
 		if (incrementalMode) {

@@ -25,7 +25,6 @@ class QueryTest extends YAMTLModule {
 		def srcRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/flowchart.ecore')
 
 		def xform = new Query(srcRes.contents[0])
-		YAMTLGroovyExtensions.init(this)
 		xform.selectedExecutionPhases = ExecutionPhase.MATCH_ONLY
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
 		xform.execute()

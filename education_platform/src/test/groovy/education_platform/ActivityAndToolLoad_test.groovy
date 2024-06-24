@@ -17,7 +17,6 @@ class ActivityAndToolLoad_test {
 		def activityPk = ActivityAndToolLoad.preloadMetamodel('./model/activity_and_tool_lang.emf').getContents().get(0) as EPackage
 		
 		def xform = new ActivityAndToolLoad(activityPk)
-		YAMTLGroovyExtensions.init(xform)
 		xform.loadInputModels(['yaml': inputModel])
 		xform.execute()
 		
@@ -37,7 +36,6 @@ class ActivityAndToolLoad_test {
 		def activityPk = ActivityAndToolLoad.preloadMetamodel('./model/activity_and_tool_lang.emf').getContents().get(0) as EPackage
 		
 		def xform = new ActivityAndToolLoad(activityPk)
-		YAMTLGroovyExtensions.init(xform)
 		xform.loadInputModels(['yaml': inputModel])
 		xform.execute()
 		
@@ -58,7 +56,6 @@ class ActivityAndToolLoad_test {
 		def activityPk = ActivityAndToolLoad.preloadMetamodel('./model/activity_and_tool_lang.ecore').getContents().get(0) as EPackage
 		
 		def xform = new ActivityAndToolLoad(activityPk)
-		YAMTLGroovyExtensions.init(xform)
 		xform.loadInputModels(['yaml': inputModel])
 		xform.execute()
 		
@@ -78,7 +75,6 @@ class ActivityAndToolLoad_test {
 		def activityPk = ActivityAndToolLoad.preloadMetamodel('./model/activity_and_tool_lang.ecore').getContents().get(0) as EPackage
 		
 		def xform = new ActivityAndToolLoad(activityPk)
-		YAMTLGroovyExtensions.init(xform)
 		xform.loadInputModels(['yaml': inputModel])
 		xform.execute()
 		

@@ -5,16 +5,13 @@ import static yamtl.dsl.Rule.*
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
 
-import yamtl.core.YAMTLModule;
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.core.YAMTLModuleGroovy
 
-public class Embedding extends YAMTLModule {
+public class Embedding extends YAMTLModuleGroovy {
 	
-	def List<String> inconsistencyList = []
+	def public List<String> inconsistencyList = []
 	
 	public Embedding(EPackage CD) {
-		
-		YAMTLGroovyExtensions_dynamicEMF.init( this )
 		
 		header().in('model1', CD).in('model2', CD)
 		

@@ -15,7 +15,7 @@ subprojects{
     sourceCompatibility = 17
 
 	ext {
-		yamtlVersion = "1.0.2"
+		yamtlVersion = "1.0.5"
 	}
 	
     eclipse {

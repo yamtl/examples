@@ -16,7 +16,6 @@ public class Comparator_test extends YAMTLModule {
 		def pk = resSM.contents.get(0) as EPackage
 		
 		def matcher = new Comparator(pk)
-		YAMTLGroovyExtensions.init( matcher )
 		
 		matcher.loadInputModels(['model1': 'model-test/multimodel/cd_model1.xmi', 'model2': 'model-test/multimodel/cd_model2.xmi'])
 		

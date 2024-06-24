@@ -3,17 +3,13 @@ package multimodel;
 import static yamtl.dsl.Rule.*
 
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.Resource
 
-import yamtl.core.YAMTLModule;
-import yamtl.groovy.YAMTLGroovyExtensions
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.core.YAMTLModuleGroovy
 
-public class Comparator extends YAMTLModule {
+public class Comparator extends YAMTLModuleGroovy {
 	
 	
 	public Comparator(EPackage CD) {
-		YAMTLGroovyExtensions_dynamicEMF.init( this )
 		
 		header().in('model1', CD).in('model2', CD).out('out', CD)
 		

@@ -24,7 +24,6 @@ class OverrideTest extends YAMTLModule {
 		def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 
 		def xform = new Override(srcRes.contents[0], tgtRes.contents[0])
-		YAMTLGroovyExtensions.init(this)
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup_with_subflow.xmi'])
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/overrideOutput.xmi'])

@@ -6,19 +6,14 @@ import static yamtl.dsl.Rule.*
 
 import org.eclipse.emf.ecore.EPackage
 
-import untypedModel.ERecord
-import untypedModel.UntypedModel
 import untypedModel.UntypedModelPackage
-import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.core.YAMTLModuleGroovy
 
-class ActivityAndToolLoad extends YAMTLModule {
+class ActivityAndToolLoad extends YAMTLModuleGroovy {
 	
 	public FlexibleMM = UntypedModelPackage.eINSTANCE ;
 	
 	public ActivityAndToolLoad(EPackage activityPk) {
-		YAMTLGroovyExtensions_dynamicEMF.init(this)
 		header().in('yaml').out('activity', activityPk)
 		ruleStore([
            rule('ActivityConfig')
@@ -49,8 +44,8 @@ class ActivityAndToolLoad extends YAMTLModule {
 					act.id = r.id
 					act.title = r.title
 					act.icon = r.icon
-					act.tools = r.tools
 					
+					act.tools.addAll( r.tools )
 					act.panels.addAll( fetch( r.panels ) )
 					
 					def layout = r.layout.get(0)
@@ -83,10 +78,9 @@ class ActivityAndToolLoad extends YAMTLModule {
 				.in('r').filter{ r.area != null }
 				.toManyCap{r.area.size()}
 				.out('row', activityPk.LayoutRow, {
-					
 					r.area[matchCount].each { 
 						def panelRef = findPanelById(['id': it])
-						row.columns += fetch(panelRef) 
+						row.columns.addAll( fetch(panelRef) )
 					}
 				}),
 			

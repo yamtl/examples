@@ -26,7 +26,6 @@ class HelperTest extends YAMTLModule {
 		def tgtRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/html.ecore')
 
 		def xform = new Helper(srcRes.contents[0], tgtRes.contents[0])
-		YAMTLGroovyExtensions.init(xform)
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
 		xform.execute()
 		xform.saveOutputModels(['out': BASE_PATH + '/helperOutput.xmi'])

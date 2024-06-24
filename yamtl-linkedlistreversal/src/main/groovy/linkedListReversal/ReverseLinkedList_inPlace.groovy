@@ -4,12 +4,10 @@ import static yamtl.dsl.Rule.*
 
 import org.eclipse.emf.ecore.EPackage
 
-import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.core.YAMTLModuleGroovy
 
-class ReverseLinkedList_inPlace extends YAMTLModule {
+class ReverseLinkedList_inPlace extends YAMTLModuleGroovy {
 	public ReverseLinkedList_inPlace(EPackage pk) {
-		YAMTLGroovyExtensions_dynamicEMF.init(this)
 
 		header().inOut('model', pk)
 		

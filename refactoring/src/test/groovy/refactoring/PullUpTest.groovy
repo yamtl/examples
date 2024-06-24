@@ -14,7 +14,6 @@ public class PullUpTest {
 	def void testRefactoring() {
 		def BASE_PATH = "./model"
 		def xform = new PullUp(EcorePackage.eINSTANCE)
-		YAMTLGroovyExtensions.init(xform)
 		xform.setInplace(true)
 		xform.withStagedExecution = false
 		

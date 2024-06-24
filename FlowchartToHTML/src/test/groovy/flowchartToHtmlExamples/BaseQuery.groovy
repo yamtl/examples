@@ -4,25 +4,20 @@ import static yamtl.dsl.Rule.*
 
 import org.eclipse.emf.ecore.EPackage
 
-import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
+import yamtl.core.YAMTLModuleGroovy
 
-class BaseQuery extends YAMTLModule {
+class BaseQuery extends YAMTLModuleGroovy {
     public BaseQuery(EPackage flowchartPk) {
-        YAMTLGroovyExtensions_dynamicEMF.init(this)
-
         header().in('in', flowchartPk)
 
         ruleStore([
-
-                rule('Transition')
-                    .in('t', flowchartPk.Transition)
-                    .query()
-                    .endWith{
-						println("processed ${t.name}") 
-					}
+            rule('Transition')
+                .in('t', flowchartPk.Transition)
+                .query()
+                .endWith{
+					println("processed ${t.name}") 
+				}
         ])
-
     }
 	def static void main(String[] args) {
 		def mm = BaseQuery.loadMetamodel('./model-test/workflow2html/flowchart.emf')

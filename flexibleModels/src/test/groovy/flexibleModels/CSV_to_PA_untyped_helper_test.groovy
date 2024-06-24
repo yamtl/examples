@@ -16,9 +16,6 @@ class CSV_to_PA_untyped_helper_test {
 		
 		def inputPath = "${BASE_PATH}/${FILE_NAME}.csv" as String
 		def xform = new CSV_to_PA_untyped_helper()
-		YAMTLGroovyExtensions.init(xform)
-		
-		
 		
 		// PREPARE MODELS
 		// Parses a CSV file and stores it as a runtime model in the YAMTL registry

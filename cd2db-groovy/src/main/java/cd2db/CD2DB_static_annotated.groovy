@@ -1,50 +1,24 @@
 package cd2db;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import Changes.ChangesPackage;
-import Changes.ModelChange;
-import Changes.ModelChangeSet;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-
-import yamtl.core.YAMTLModule
-import yamtl.groovy.YAMTLGroovyExtensions
-import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
-
 import static yamtl.dsl.Helper.*;
 import static yamtl.dsl.Rule.*;
 
-import atl.research.class_.Attribute;
+import org.eclipse.emf.ecore.EPackage;
+
 import atl.research.class_.Class;
 import atl.research.class_.Class_Package;
 import atl.research.class_.DataType;
-import atl.research.relational_.Column;
 import atl.research.relational_.Relational_Package;
-import atl.research.relational_.Table;
-import atl.research.relational_.Type;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import yamtl.core.YAMTLModule;
+import yamtl.core.YAMTLModuleGroovy
 
 // transformation
-public class CD2DB_static_annotated extends YAMTLModule {
+public class CD2DB_static_annotated extends YAMTLModuleGroovy {
 	// setup
 	public EPackage CD = Class_Package.eINSTANCE;
     public EPackage DB = Relational_Package.eINSTANCE;
 
     // transformation
     CD2DB_static_annotated() {
-		// setup
-        YAMTLGroovyExtensions_dynamicEMF.init(this)
-
 		// transformation
         header().in('cd', CD).out('db', DB)
 
@@ -159,7 +133,7 @@ public class CD2DB_static_annotated extends YAMTLModule {
 		// helper
         helperStore([
             staticAttribute('objectIdType', {
-                allInstances(CD.DataType).find{ it instanceof DataType && it.name == 'Integer' }
+                allInstances(CD.DataType).find{ it.name == 'Integer' }
             })
         ])
     }

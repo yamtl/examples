@@ -25,7 +25,6 @@ class ToManyTest extends YAMTLModule {
 		
 		// Try the below line using the ToManyCap class instead of ToMany
 		def xform = new ToManyCap(srcRes.contents[0], tgtRes.contents[0])
-		YAMTLGroovyExtensions.init(this)
 		xform.loadInputModels(['in': BASE_PATH + '/wakeup.xmi'])
 		xform.execute()
 		

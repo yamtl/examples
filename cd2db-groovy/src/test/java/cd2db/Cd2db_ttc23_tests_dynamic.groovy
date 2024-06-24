@@ -67,6 +67,8 @@ class Cd2db_ttc23_tests_dynamic {
 		def outputBatchModelPath = "src/main/resources/models/${testName}/outputBatch_dynamic.xmi"
 		def outputIncrModelPath = "src/main/resources/models/${testName}/outputIncr_dynamic.xmi"
 		
+		println(expectedModelPath)
+		
 		ResourceSet resourceSet = new ResourceSetImpl()
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
 				'xmi',
@@ -77,7 +79,6 @@ class Cd2db_ttc23_tests_dynamic {
 		EcoreUtil.resolveAll(resourceSet)
 	
 		def xform = new CD2DB_dynamic(CD, DB)
-		YAMTLGroovyExtensions.init(xform)
 		xform.setEnableCorrectnessCheck(false)
 		
 		if (incrementalMode) {

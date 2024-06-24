@@ -19,7 +19,6 @@ class ReverseLinkedList_inPlace_Test extends YAMTLModule {
 		def res = YAMTLModule.preloadMetamodel(BASE_PATH + '/LinkedList.ecore') as Resource
 		def xform = new ReverseLinkedList_inPlace(res.contents[0] as EPackage)
 		
-		YAMTLGroovyExtensions.init(xform)
 		xform.setInplace(true)
 		
 		xform.withStagedExecution = false
