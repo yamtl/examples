@@ -5,8 +5,6 @@ import static yamtl.dsl.Rule.*;
 
 import org.eclipse.emf.ecore.EPackage;
 
-import atl.research.class_.Class;
-import atl.research.class_.DataType;
 import yamtl.core.YAMTLModuleGroovy
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
@@ -53,7 +51,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('DataTypeAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type instanceof DataType && !att.multiValued
+					att.type?.eClass()?.name=='DataType' && !att.multiValued
 				})
 				// transformation
 				.out('col', DB.Column, {
@@ -66,7 +64,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('MultiValuedDataTypeAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type instanceof DataType && att.multiValued
+					att.type?.eClass()?.name=='DataType' && att.multiValued
 				})
 				// transformation
 				.out('t', DB.Table, {
@@ -91,7 +89,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('ClassAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type instanceof Class && !att.multiValued
+					att.type?.eClass()?.name=='Class' && !att.multiValued
 				})
 				// transformation
 				.out('col', DB.Column, {
@@ -104,7 +102,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('MultiValuedClassAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type instanceof Class && att.multiValued
+					att.type?.eClass()?.name=='Class' && att.multiValued
 				})
 				// transformation
 				.out('t', DB.Table, {

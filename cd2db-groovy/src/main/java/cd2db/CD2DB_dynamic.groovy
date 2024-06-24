@@ -5,8 +5,6 @@ import static yamtl.dsl.Rule.*;
 
 import org.eclipse.emf.ecore.EPackage;
 
-import atl.research.class_.Class;
-import atl.research.class_.DataType;
 import yamtl.core.YAMTLModuleGroovy
 
 public class CD2DB_dynamic extends YAMTLModuleGroovy {
@@ -39,7 +37,7 @@ ruleStore([
 	
 	rule('DataTypeAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type instanceof DataType && !att.multiValued
+			att.type?.eClass()?.name=='DataType' && !att.multiValued
 		})
 		.out('col', DB.Column, {
 			col.name = att.name
@@ -48,7 +46,7 @@ ruleStore([
 	
 	rule('MultiValuedDataTypeAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type instanceof DataType && att.multiValued
+			att.type?.eClass()?.name=='DataType' && att.multiValued
 		})
 		.out('t', DB.Table, {
 			t.name = "${att.owner?.name?:''}_${att.name?:''}"
@@ -66,7 +64,7 @@ ruleStore([
 	
 	rule('ClassAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type instanceof Class && !att.multiValued
+			att.type?.eClass()?.name=='Class' && !att.multiValued
 		})
 		.out('col', DB.Column, {
 			col.name = "${att.name}Id"
@@ -75,7 +73,7 @@ ruleStore([
 
 				rule('MultiValuedClassAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type instanceof Class && att.multiValued
+			att.type?.eClass()?.name=='Class' && att.multiValued
 		})
 		.out('t', DB.Table, {
 			t.name = "${att.owner?.name?:''}_${att.name}"
