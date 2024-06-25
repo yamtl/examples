@@ -1,290 +1,290 @@
+@namespace(uri="HTML", prefix="")
 package HTML;
-  
-  class HTML {
-    !ordered val HEAD#html head;
-    !ordered val BODY#html body;
-  }
 
-  class HTMLElement {
-    !unique !ordered attr EString value;
-    !ordered val HTMLElement[*] children;
-  }
+class HTML {
+	val HEAD#html head;
+	val BODY#html body;
+}
 
-  class HEAD extends HTMLElement {
-    !ordered val HEADElement[*]#head headElements;
-    !ordered ref HTML#head html;
-  }
+class HTMLElement {
+	attr String value;
+	val HTMLElement[*] children;
+}
 
-  abstract class HEADElement extends HTMLElement {
-    !ordered ref HEAD#headElements head;
-  }
+class HEAD extends HTMLElement {
+	val HEADElement[*]#head headElements;
+	ref HTML#head html;
+}
 
-  class LINK extends HEADElement {
-    !unique !ordered attr EString rel;
-    !unique !ordered attr EString title;
-    !unique !ordered attr EString ahref;
-    !unique !ordered attr EString type;
-  }
+abstract class HEADElement extends HTMLElement {
+	ref HEAD#headElements head;
+}
 
-  class TITLE extends HEADElement {
-  }
+class LINK extends HEADElement {
+	attr String rel;
+	attr String title;
+	attr String ahref;
+	attr String type;
+}
 
-  class BODY extends HTMLElement {
-    !unique !ordered attr EString background;
-    !unique !ordered attr EString bgcolor;
-    !unique !ordered attr EString text;
-    !unique !ordered attr EString link;
-    !unique !ordered attr EString alink;
-    !unique !ordered attr EString vlink;
-    !ordered val BODYElement[*] bodyElements;
-    !ordered ref HTML#body html;
-  }
+class TITLE extends HEADElement {
+}
 
-  abstract class BODYElement extends HTMLElement {
-  }
+class BODY extends HTMLElement {
+	attr String background;
+	attr String bgcolor;
+	attr String text;
+	attr String link;
+	attr String alink;
+	attr String vlink;
+	val BODYElement[*] bodyElements;
+	ref HTML#body html;
+}
 
-  class H1 extends BODYElement {
-  }
+abstract class BODYElement extends HTMLElement {
+}
 
-  class H2 extends BODYElement {
-  }
+class H1 extends BODYElement {
+}
 
-  class H3 extends BODYElement {
-  }
+class H2 extends BODYElement {
+}
 
-  class H4 extends BODYElement {
-  }
+class H3 extends BODYElement {
+}
 
-  class EM extends BODYElement {
-  }
+class H4 extends BODYElement {
+}
 
-  class STRONG extends BODYElement {
-  }
+class EM extends BODYElement {
+}
 
-  class B extends BODYElement {
-  }
+class STRONG extends BODYElement {
+}
 
-  class I extends BODYElement {
-  }
+class B extends BODYElement {
+}
 
-  class TT extends BODYElement {
-  }
+class I extends BODYElement {
+}
 
-  class PRE extends BODYElement {
-  }
+class TT extends BODYElement {
+}
 
-  class BIG extends BODYElement {
-  }
+class PRE extends BODYElement {
+}
 
-  class SMALL extends BODYElement {
-  }
+class BIG extends BODYElement {
+}
 
-  class SUB extends BODYElement {
-  }
+class SMALL extends BODYElement {
+}
 
-  class SUP extends BODYElement {
-  }
+class SUB extends BODYElement {
+}
 
-  class STRIKE extends BODYElement {
-  }
+class SUP extends BODYElement {
+}
 
-  class FONT extends BODYElement {
-    !unique !ordered attr EString color;
-    !unique !ordered attr EString face;
-    !unique !ordered attr EString size;
-  }
+class STRIKE extends BODYElement {
+}
 
-  class IMG extends BODYElement {
-    !unique !ordered attr EString src;
-    !unique !ordered attr EString width;
-    !unique !ordered attr EString height;
-    !unique !ordered attr EString alt;
-    !unique !ordered attr EString align;
-    !unique !ordered attr EString vspace;
-    !unique !ordered attr EString hspace;
-    !unique !ordered attr EString ismap;
-    !unique !ordered attr EString usemap;
-    !unique !ordered attr EString border;
-  }
+class FONT extends BODYElement {
+	attr String color;
+	attr String face;
+	attr String size;
+}
 
-  class BR extends BODYElement {
-    !unique !ordered attr EString clear;
-  }
+class IMG extends BODYElement {
+	attr String src;
+	attr String width;
+	attr String height;
+	attr String alt;
+	attr String align;
+	attr String vspace;
+	attr String hspace;
+	attr String ismap;
+	attr String usemap;
+	attr String border;
+}
 
-  class MAP extends BODYElement {
-  }
+class BR extends BODYElement {
+	attr String clear;
+}
 
-  class AREA extends BODYElement {
-    !unique !ordered attr EString shape;
-    !unique !ordered attr EString coords;
-    !unique !ordered attr EString ahref;
-  }
+class MAP extends BODYElement {
+}
 
-  class STYLE extends BODYElement {
-  }
+class AREA extends BODYElement {
+	attr String shape;
+	attr String coords;
+	attr String ahref;
+}
 
-  class EMBED extends BODYElement {
-    !unique !ordered attr EString src;
-    !unique !ordered attr EString width;
-    !unique !ordered attr EString height;
-    !unique !ordered attr EString align;
-    !unique !ordered attr EString vspace;
-    !unique !ordered attr EString hspace;
-    !unique !ordered attr EString border;
-  }
+class STYLE extends BODYElement {
+}
 
-  class NOEMBED extends BODYElement {
-  }
+class EMBED extends BODYElement {
+	attr String src;
+	attr String width;
+	attr String height;
+	attr String align;
+	attr String vspace;
+	attr String hspace;
+	attr String border;
+}
 
-  class SPAN extends BODYElement {
-    !unique !ordered attr EString style;
-  }
+class NOEMBED extends BODYElement {
+}
 
-  class A extends BODYElement {
-    !unique !ordered attr EString ahref;
-    !unique !ordered attr EString name;
-    !unique !ordered attr EString ~id;
-  }
+class SPAN extends BODYElement {
+	attr String style;
+}
 
-  class DIV extends BODYElement {
-    !unique !ordered attr EString align;
-  }
+class A extends BODYElement {
+	attr String ahref;
+	attr String name;
+	attr String ~id;
+}
 
-  class P extends BODYElement {
-  }
+class DIV extends BODYElement {
+	attr String align;
+}
 
-  abstract class TABLEElement extends BODYElement {
-    !unique !ordered attr EString bgcolor;
-    !unique !ordered attr EString background;
-  }
+class P extends BODYElement {
+}
 
-  class TABLE extends TABLEElement {
-    !unique !ordered attr EString border;
-    !unique !ordered attr EString width;
-    !unique !ordered attr EString cellspacing;
-    !unique !ordered attr EString cellpadding;
-    !ordered val TR[*]#table trs;
-  }
+abstract class TABLEElement extends BODYElement {
+	attr String bgcolor;
+	attr String background;
+}
 
-  class TR extends TABLEElement {
-    !unique !ordered attr EString valign;
-    !unique !ordered attr EString align;
-    !ordered ref TABLE#trs table;
-    !ordered val TD[*]#tr tds;
-  }
+class TABLE extends TABLEElement {
+	attr String border;
+	attr String width;
+	attr String cellspacing;
+	attr String cellpadding;
+	val TR[*]#table trs;
+}
 
-  class TD extends TABLEElement {
-    !unique !ordered attr EString colspan;
-    !unique !ordered attr EString rowspan;
-    !unique !ordered attr EString valign;
-    !unique !ordered attr EString align;
-    !unique !ordered attr EString width;
-    !ordered ref TR#tds tr;
-  }
+class TR extends TABLEElement {
+	attr String valign;
+	attr String align;
+	ref TABLE#trs table;
+	val TD[*]#tr tds;
+}
 
-  class TH extends TD {
-  }
+class TD extends TABLEElement {
+	attr String colspan;
+	attr String rowspan;
+	attr String valign;
+	attr String align;
+	attr String width;
+	ref TR#tds tr;
+}
 
-  class FORM {
-    !unique !ordered attr EString action;
-    !unique !ordered attr EString method;
-  }
+class TH extends TD {
+}
 
-  class INPUT {
-    !unique !ordered attr EString align;
-    !unique !ordered attr EString maxlength;
-    !unique !ordered attr EString size;
-    !unique !ordered attr EString checked;
-    !unique !ordered attr EString src;
-    !unique !ordered attr EString inputValue;
-    !unique !ordered attr EString name;
-    !unique !ordered attr EString type;
-  }
+class FORM {
+	attr String action;
+	attr String method;
+}
 
-  class TEXTAREA {
-    !unique !ordered attr EString name;
-    !unique !ordered attr EString rows;
-    !unique !ordered attr EString cols;
-  }
+class INPUT {
+	attr String align;
+	attr String maxlength;
+	attr String size;
+	attr String checked;
+	attr String src;
+	attr String inputValue;
+	attr String name;
+	attr String type;
+}
 
-  class SELECT {
-    !unique !ordered attr EString multiple;
-    !unique !ordered attr EString size;
-    !unique !ordered attr EString name;
-  }
+class TEXTAREA {
+	attr String name;
+	attr String rows;
+	attr String cols;
+}
 
-  class OPTION {
-    !unique !ordered attr EString selected;
-    !unique !ordered attr EString optionValue;
-  }
+class SELECT {
+	attr String multiple;
+	attr String size;
+	attr String name;
+}
 
-  abstract class ListElement {
-    !unique !ordered attr EString type;
-  }
+class OPTION {
+	attr String selected;
+	attr String optionValue;
+}
 
-  class OL extends ListElement {
-    !unique !ordered attr EString start;
-  }
+abstract class ListElement {
+	attr String type;
+}
 
-  class UL extends ListElement {
-  }
+class OL extends ListElement {
+	attr String start;
+}
 
-  class LI extends ListElement {
-    !unique !ordered attr EString liValue;
-  }
+class UL extends ListElement {
+}
 
-  class DL {
-  }
+class LI extends ListElement {
+	attr String liValue;
+}
 
-  class DT {
-  }
+class DL {
+}
 
-  class DD {
-  }
+class DT {
+}
 
-  class APPLET {
-    !unique !ordered attr EString applet;
-    !unique !ordered attr EString ~class;
-    !unique !ordered attr EString src;
-    !unique !ordered attr EString align;
-    !unique !ordered attr EString width;
-    !unique !ordered attr EString height;
-  }
+class DD {
+}
 
-  class PARAM {
-    !unique !ordered attr EString name;
-    !unique !ordered attr EString paramValue;
-  }
+class APPLET {
+	attr String applet;
+	attr String ~class;
+	attr String src;
+	attr String align;
+	attr String width;
+	attr String height;
+}
 
-  class OBJECT {
-    !unique !ordered attr EString classid;
-    !unique !ordered attr EString ~id;
-    !unique !ordered attr EString data;
-    !unique !ordered attr EString type;
-    !unique !ordered attr EString standby;
-  }
+class PARAM {
+	attr String name;
+	attr String paramValue;
+}
 
-  class FRAMESET {
-    !unique !ordered attr EString rows;
-    !unique !ordered attr EString cols;
-    !unique !ordered attr EString framespacing;
-    !unique !ordered attr EString frameborder;
-    !unique !ordered attr EString border;
-  }
+class OBJECT {
+	attr String classid;
+	attr String ~id;
+	attr String data;
+	attr String type;
+	attr String standby;
+}
 
-  class FRAME {
-    !unique !ordered attr EString src;
-    !unique !ordered attr EString name;
-    !unique !ordered attr EString marginwidth;
-    !unique !ordered attr EString marginheight;
-    !unique !ordered attr EString scrolling;
-    !unique !ordered attr EString noresize;
-  }
+class FRAMESET {
+	attr String rows;
+	attr String cols;
+	attr String framespacing;
+	attr String frameborder;
+	attr String border;
+}
 
-  class NOFRAME {
-  }
+class FRAME {
+	attr String src;
+	attr String name;
+	attr String marginwidth;
+	attr String marginheight;
+	attr String scrolling;
+	attr String noresize;
+}
 
-  class IFRAME extends FRAME {
-  }
+class NOFRAME {
+}
 
-// Based on https://github.com/SATToSE/SoTeSoLa2012/blob/master/hackathon/modisco-eclipse/org.eclipse.gmt.modisco.tool.metricsvisualizationbuilder/Metamodels/HTML.ecore
+class IFRAME extends FRAME {
+}
+
