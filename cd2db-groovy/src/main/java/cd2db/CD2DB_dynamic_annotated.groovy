@@ -51,7 +51,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('DataTypeAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type?.eClass()?.name=='DataType' && !att.multiValued
+					CD.DataType.isInstance(att.type) && !att.multiValued
 				})
 				// transformation
 				.out('col', DB.Column, {
@@ -64,7 +64,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('MultiValuedDataTypeAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type?.eClass()?.name=='DataType' && att.multiValued
+					CD.DataType.isInstance(att.type) && att.multiValued
 				})
 				// transformation
 				.out('t', DB.Table, {
@@ -89,7 +89,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('ClassAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type?.eClass()?.name=='Class' && !att.multiValued
+					CD.Class.isInstance(att.type) && !att.multiValued
 				})
 				// transformation
 				.out('col', DB.Column, {
@@ -102,7 +102,7 @@ public class CD2DB_dynamic_annotated extends YAMTLModuleGroovy {
 			rule('MultiValuedClassAttribute2Column')
 				// model_navigation
 				.in('att', CD.Attribute).filter({
-					att.type?.eClass()?.name=='Class' && att.multiValued
+					CD.Class.isInstance(att.type) && att.multiValued
 				})
 				// transformation
 				.out('t', DB.Table, {

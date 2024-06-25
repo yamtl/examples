@@ -18,10 +18,10 @@ ruleStore([
 		.in('c', CD.Class)
 		.out('t', DB.Table, {
 			t.name = c.name ?: ''
-			t.col += key
-			t.key += key
+			t.col.add( key )
+			t.key.add( key )
 			def list = c.attr.findAll{ !it.multiValued }
-			t.col += fetch(list, 'col')
+			t.col.addAll( fetch(list, 'col') )
 		})
 		.out('key', DB.Column, {
 			def key=key
@@ -37,7 +37,7 @@ ruleStore([
 	
 	rule('DataTypeAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type?.eClass()?.name=='DataType' && !att.multiValued
+			CD.DataType.isInstance(att.type) && !att.multiValued
 		})
 		.out('col', DB.Column, {
 			col.name = att.name
@@ -46,12 +46,12 @@ ruleStore([
 	
 	rule('MultiValuedDataTypeAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type?.eClass()?.name=='DataType' && att.multiValued
+			CD.DataType.isInstance(att.type) && att.multiValued
 		})
 		.out('t', DB.Table, {
 			t.name = "${att.owner?.name?:''}_${att.name?:''}"
-			t.col += id
-			t.col += col
+			t.col.add( id )
+			t.col.add( col )
 		})
 		.out('id', DB.Column, {
 			id.name = "${att.owner?.name?.toLowerCase()?:''}Id"
@@ -64,7 +64,7 @@ ruleStore([
 	
 	rule('ClassAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type?.eClass()?.name=='Class' && !att.multiValued
+			CD.Class.isInstance(att.type) && !att.multiValued
 		})
 		.out('col', DB.Column, {
 			col.name = "${att.name}Id"
@@ -73,12 +73,12 @@ ruleStore([
 
 				rule('MultiValuedClassAttribute2Column')
 		.in('att', CD.Attribute).filter({
-			att.type?.eClass()?.name=='Class' && att.multiValued
+			CD.Class.isInstance(att.type) && att.multiValued
 		})
 		.out('t', DB.Table, {
 			t.name = "${att.owner?.name?:''}_${att.name}"
-			t.col += id
-			t.col += col
+			t.col.add( id )
+			t.col.add( col )
 		})
 		.out('id', DB.Column, {
 			id.name = "${att.owner?.name?.toLowerCase()?:''}Id"						
